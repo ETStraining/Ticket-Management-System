@@ -1,9 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import bgImage from '../assets/bgimage.png'
 
 function Hero() {
   return (
-    <div className="h-screen w-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 flex sm:flex-row flex-col">
+    <div  style={{
+      backgroundImage: `url(${bgImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}
+    className="h-screen w-screen bg-gradient-to-r  flex sm:flex-row flex-col">
       <div className=" w-full h-full flex flex-col justify-center items-center px-10 sm:items-start sm:px-20">
         <h1 className="text-5xl text-white text-center font-bold mb-4 sm:text-left font-inter">
           Streamline Your Support with Our Ticket System

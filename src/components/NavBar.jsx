@@ -11,7 +11,7 @@ function NavBar() {
         </div>
         <ul className="flex space-x-4">
           <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
-              Dashboard
+             <Link to='/dashboard' >Dashboard</Link>
           </li>
           <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
               New Ticket

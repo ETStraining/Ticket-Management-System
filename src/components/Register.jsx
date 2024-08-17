@@ -42,19 +42,6 @@ function Register() {
               onChange={(e) => setFullName(e.target.value)}
               />
           </div>
-          {/* <div>
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-              Username
-            </label>
-            <input
-              type="text"
-              id="username"
-              className="shadow border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              
-            />
-          </div> */}
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
               Email
