@@ -13,9 +13,12 @@ function NavBar() {
           <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
              <Link to='/dashboard' >Dashboard</Link>
           </li>
+
           <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
-              New Ticket
+             <Link to='/new-ticket' >New Ticket</Link>
           </li>
+        
+        
           <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
                <Link to='/login'>Login</Link> 
           </li>
@@ -24,6 +27,7 @@ function NavBar() {
           </li>
         </ul>
       </div>
+   
     </nav>
   );
 }

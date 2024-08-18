@@ -6,6 +6,7 @@ import { BrowserRouter as Router,Routes,Route } from 'react-router-dom'
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
 import Dashboard from './components/Dashboard.jsx'
+import NewTicket from './components/NewTicket.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/dashboard' element={<Dashboard/>}/>
+      <Route path='/new-ticket' element={<NewTicket/>} />
     </Routes>
    </Router>
   </React.StrictMode>,
