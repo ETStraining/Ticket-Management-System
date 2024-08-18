@@ -17,7 +17,7 @@ function Login() {
   };
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+    <div className="h-screen w-screen flex items-center justify-center bg-gray-300 --bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
       <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
         <h1 className="text-2xl font-bold text-center mb-6">Login to Your Account</h1>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}

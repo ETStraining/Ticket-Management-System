@@ -19,8 +19,8 @@ function Hero() {
         </p>
         <div className="flex justify-center sm:justify-start md: mt-10 items-center">
           <Link
-            to="/"
-            className="bg-indigo-700 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded mr-4"
+            to="/new-ticket"
+            className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded mr-4"
           >
             Book Your Ticket Now
           </Link>
