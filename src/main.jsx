@@ -7,6 +7,7 @@ import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
 import Dashboard from './components/Dashboard.jsx'
 import NewTicket from './components/NewTicket.jsx'
+import Vehicle from './components/Vehicle.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -18,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path='/register' element={<Register/>}/>
       <Route path='/dashboard' element={<Dashboard/>}/>
       <Route path='/new-ticket' element={<NewTicket/>} />
+      <Route path='/choose-vehicle' element={<Vehicle/>} />
     </Routes>
    </Router>
   </React.StrictMode>,
