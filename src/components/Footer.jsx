@@ -1,29 +1,76 @@
-// Footer.js
 import React from 'react';
-
+import { FaFacebookF, FaTwitter, FaMapMarkerAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
-    <footer className="bg-white shadow-md py-4">
-      <div className="container mx-auto flex flex-col items-center">
-        {/* Subscription Section */}
+    <footer className="bg-gradient-to-r from-indigo-300 via-purple-400 to-pink-300 text-gray-600 pt-10 pb-2 px-8 md:px-20">
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div>
+            <h3 className="text-lg font-semibold mb-4">About Us</h3>
+            <ul>
+              <li>Background</li>
+              <li>Mission</li>
+              <li>Team</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Media</h3>
+            <ul>
+              <li>Event</li>
+              <li>Gallery</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Our Services</h3>
+            <ul>
+              <li>Transportation</li>
+              <li>Vehicle Valuation</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
+            <ul>
+              <li>Address: KN 1 ST Nyarugenge</li>
+              <li>Email: info@tsmo.rw</li>
+              <li>Tel: (+250) 786 946 188</li>
+              <li>P.Box: Kigali / Rwanda</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto flex flex-col">
         <div className="flex justify-center mb-4">
           <input
             type="email"
             placeholder="Enter your email"
             className="px-3 py-1.5 border rounded-md text-[13px] focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
           />
-          <button className="bg-purple-600 text-white px-3 py-1.5 rounded-md text-[13px] hover:bg-purple-700">
+          <button className="bg-purple-600 text-white px-4 ml-4 py-2 rounded-md text-[13px] hover:bg-purple-700">
             Subscribe
           </button>
         </div>
-
-        {/* Copyright and Links Section */}
-        <div className="text-center text-gray-600 text-sm">
-          <p>&copy; {new Date().getFullYear()} Your Company Name. All rights reserved.</p>
-          <div className="flex justify-center space-x-4 mt-2">
-            <a href="#" className="hover:text-purple-600">Privacy Policy</a>
-            <a href="#" className="hover:text-purple-600">Terms of Service</a>
-            <a href="#" className="hover:text-purple-600">Contact Us</a>
+        <hr className="my-8 border-gray-300 w-full" />
+        <div className="text-gray-600 text-sm">
+          <div className="flex justify-between items-center">
+            <div className="flex text-gray-700 space-x-4 mt-2">
+              <Link to="" className="hover:text-purple-900">Privacy Policy</Link>
+              <Link to="" className="hover:text-purple-900">Terms of Service</Link>
+              <Link to="" className="hover:text-purple-900">Contact Us</Link>
+            </div>            
+            <p>&copy; {new Date().getFullYear()} XCodes. All rights reserved.</p>
+            <div className="flex space-x-4 text-xl text-white">
+              <Link to="" className="hover:text-blue-700">
+                <FaFacebookF />
+              </Link>
+              <Link to="" className="hover:text-blue-500">
+                <FaTwitter />
+              </Link>
+              <Link to="" className="hover:text-red-500">
+                <FaMapMarkerAlt />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
