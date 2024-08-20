@@ -31,7 +31,7 @@ function DepartureCard() {
       </div>
       <Link to='/new-ticket'>
       <button className='border-none px-4 py-2 bg-indigo-600 rounded-md text-white font-semibold
-      hover:bg-indigo-900'>Book now</button>
+      hover:bg-indigo-800'>Book now</button>
       </Link>
     </div>
   );
