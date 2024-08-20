@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -7,6 +8,8 @@ import { FaPhone, FaEnvelope } from 'react-icons/fa';
 import Vehicle from './Vehicle';
 import ContactDetail from './ContactDetail';
 import { Link } from 'react-router-dom';
+import { collection, doc, setDoc } from "firebase/firestore";
+import { db } from './config.js'; 
 
 const NewTicket = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -31,6 +34,21 @@ const NewTicket = () => {
     setContactInfo(info);
     setCurrentStep(4);
     console.log('Booking Summary:', { rideDetails, selectedVehicle, contactInfo: info });
+  };
+
+  const handleConfirmBooking = async () => {
+    try {
+      const bookingId = new Date().getTime().toString();
+      await setDoc(doc(db, "bookings", bookingId), {
+        rideDetails,
+        selectedVehicle,
+        contactInfo
+      });
+      alert('Booking confirmed successfully!');
+    } catch (error) {
+      console.error("Error confirming booking: ", error);
+      alert('Error confirming booking. Please try again.');
+    }
   };
 
   return (
@@ -169,7 +187,10 @@ const NewTicket = () => {
               <p><strong>Email:</strong> {contactInfo.email}</p>
               <p className="mb-2"><strong>Payment Method:</strong> {contactInfo.paymentMethod}</p>
 
-              <button className="mt-6 bg-green-600 text-white font-bold py-2 px-4 rounded hover:bg-green-700 transition duration-300">
+              <button 
+                onClick={handleConfirmBooking} 
+                className="mt-6 bg-green-600 text-white font-bold py-2 px-4 rounded hover:bg-green-700 transition duration-300"
+              >
                 Confirm Booking
               </button>
             </div>
