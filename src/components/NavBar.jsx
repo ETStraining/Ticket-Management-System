@@ -13,6 +13,9 @@ function NavBar() {
           <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
              <Link to='/dashboard' >Dashboard</Link>
           </li>
+          <li className='text-white hover:bg-blue-700 px-3 py-2 rounded'>
+            <Link to='/about'>About</Link>
+          </li>
 
           <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
              <Link to='/new-ticket' >New Ticket</Link>
