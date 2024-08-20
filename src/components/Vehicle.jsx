@@ -1,11 +1,31 @@
 import React, { useState } from 'react';
 
+const vehicles = [
+  {
+    id: 1,
+    name: 'Sedan',
+    times: ['08:00', '08:30', '09:00', '09:30', '10:00'],
+  },
+  {
+    id: 2,
+    name: 'SUV',
+    times: ['09:00', '09:30', '10:00', '10:30', '11:00'],
+  },
+  {
+    id: 3,
+    name: 'Van',
+    times: ['10:00', '10:30', '11:00', '11:30', '12:00'],
+  },
+];
+
 const Vehicle = ({ onVehicleSelect }) => {
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [selectedTime, setSelectedTime] = useState('');
 
   const handleVehicleChange = (e) => {
-    setSelectedVehicle(e.target.value);
+    const vehicle = vehicles.find((v) => v.id === parseInt(e.target.value, 10));
+    setSelectedVehicle(vehicle);
+    setSelectedTime('');
   };
 
   const handleTimeChange = (e) => {
@@ -14,7 +34,7 @@ const Vehicle = ({ onVehicleSelect }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onVehicleSelect({ name: selectedVehicle, selectedTime });
+    onVehicleSelect({ name: selectedVehicle.name, selectedTime });
   };
 
   return (
@@ -23,18 +43,43 @@ const Vehicle = ({ onVehicleSelect }) => {
       <form onSubmit={handleSubmit}>
         <div className="mt-4">
           <label className="block font-semibold">Vehicle</label>
-          <select value={selectedVehicle} onChange={handleVehicleChange} className="border p-2 mt-1 w-full" required>
+          <select
+            value={selectedVehicle?.id || ''}
+            onChange={handleVehicleChange}
+            className="border border-gray-300 rounded p-2 mt-1 w-full"
+            required
+          >
             <option value="" disabled>Select a vehicle</option>
-            <option value="Sedan">Sedan</option>
-            <option value="SUV">SUV</option>
-            <option value="Van">Van</option>
+            {vehicles.map((vehicle) => (
+              <option key={vehicle.id} value={vehicle.id}>
+                {vehicle.name}
+              </option>
+            ))}
           </select>
         </div>
-        <div className="mt-4">
-          <label className="block font-semibold">Select Pickup Time</label>
-          <input type="time" value={selectedTime} onChange={handleTimeChange} className="border p-2 mt-1 w-full" required />
-        </div>
-        <button type="submit" className="mt-6 bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-300">
+        {selectedVehicle && (
+          <div className="mt-4">
+            <label className="block font-semibold">Select Pickup Time</label>
+            <select
+              value={selectedTime}
+              onChange={handleTimeChange}
+              className="border border-gray-300 rounded p-2 mt-1 w-full"
+              required
+            >
+              <option value="" disabled>Select a time</option>
+              {selectedVehicle.times.map((time) => (
+                <option key={time} value={time}>
+                  {time}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+        <button
+          type="submit"
+          className="mt-6 bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-300"
+          disabled={!selectedVehicle || !selectedTime}
+        >
           Continue to Contact Details
         </button>
       </form>

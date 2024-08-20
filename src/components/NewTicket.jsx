@@ -33,7 +33,7 @@ const NewTicket = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen px-20">
+    <div className="bg-gray-100 min-h-screen text-[15px] px-20">
       <header className="bg-blue-600 text-white p-4 flex justify-between items-center absolute left-0 top-0 w-screen px-20">
         <div className="flex items-center space-x-2">
           <FaPhone className="text-lg" />
@@ -71,7 +71,7 @@ const NewTicket = () => {
           </div>
         </section>
 
-        <div className="relative z-20 mb-11 mt-6 flex justify-between items-center">
+        <div className=" z-20 mb-11 mt-6 flex justify-between items-center sticky top-5 left-0 bg-white">
           <div className="flex items-center space-x-4">
             <div className={`w-10 h-10 flex items-center justify-center ${currentStep >= 1 ? 'bg-blue-600' : 'bg-gray-400'} text-white rounded-full`}>1</div>
             <p className="font-semibold text-gray-700">Enter Ride Details</p>
@@ -93,33 +93,33 @@ const NewTicket = () => {
           </div>
         </div>
 
-        <section>
+        <section className=''>
           {currentStep === 1 && (
             <form onSubmit={handleRideDetailsSubmit}>
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-1">
-                  <h3 className="text-xl font-semibold">Ride Details</h3>
+                  <h3 className="text-xl font-semibold text-[15px]">Ride Details</h3>
                   <div className="mt-4">
-                    <label className="block font-semibold">Pickup Date</label>
-                    <input type="date" name="pickupDate" className="border p-2 mt-1 w-full" required />
-                    <label className="block font-semibold mt-4">Pickup Time</label>
-                    <input type="time" name="pickupTime" className="border p-2 mt-1 w-full" required />
-                    <label className="block font-semibold mt-4">Pickup Location</label>
-                    <select name="pickupLocation" className="border p-2 mt-1 w-full" required>
+                    <label className="block font-semibold text-[15px]">Pickup Date</label>
+                    <input type="date" name="pickupDate" className="border border-gray-300 p-2 mt-1 w-full"  />
+                    <label className="block font-semibold text-[15px] mt-4">Pickup Time</label>
+                    <input type="time" name="pickupTime" className="border border-gray-300 p-2 mt-1 w-full"  />
+                    <label className="block font-semibold text-[15px] mt-4">Pickup Location</label>
+                    <select name="pickupLocation" className="border border-gray-300 text-[12px] p-2 mt-1 w-full" >
                       <option>Kigali</option>
                       <option>Rubavu</option>
                       <option>Musanze</option>
                     </select>
 
-                    <label className="block font-semibold mt-4">Drop-off Location</label>
-                    <select name="dropoffLocation" className="border p-2 mt-1 w-full" required>
+                    <label className="block font-semibold text-[15px] mt-4">Drop-off Location</label>
+                    <select name="dropoffLocation" className="border border-gray-300 text-[12px] p-2 mt-1 w-full" >
                       <option>Kigali</option>
                       <option>Rubavu</option>
                       <option>Musanze</option>
                     </select>
 
-                    <label className="block font-semibold mt-4">Transfer Type</label>
-                    <select name="transferType" className="border p-2 mt-1 w-full" required>
+                    <label className="block font-semibold text-[15px] mt-4">Transfer Type</label>
+                    <select name="transferType" className="border border-gray-300 text-[12px] p-2 mt-1 w-full" >
                       <option>One way</option>
                       <option>Round trip</option>
                     </select>
