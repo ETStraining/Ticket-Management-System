@@ -6,6 +6,7 @@ import Logo from '../img/logo.png';
 import { FaPhone, FaEnvelope } from 'react-icons/fa';
 import Vehicle from './Vehicle';
 import ContactDetail from './ContactDetail';
+import { Link } from 'react-router-dom';
 
 const NewTicket = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -33,7 +34,7 @@ const NewTicket = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen text-[15px] px-20">
+    <div className="bg-gray-100 min-h-screen px-20">
       <header className="bg-blue-600 text-white p-4 flex justify-between items-center absolute left-0 top-0 w-screen px-20">
         <div className="flex items-center space-x-2">
           <FaPhone className="text-lg" />
@@ -54,10 +55,9 @@ const NewTicket = () => {
           <h1 className="text-2xl font-bold text-blue-600">TICKET LEAD</h1>
         </div>
         <ul className="flex space-x-6">
-          <li>Home</li>
-          <li>About</li>
-          <li>Services</li>
-          <li className="font-bold text-blue-600">Booking</li>
+          <Link to="/">Home</Link> 
+          <Link to=''>About</Link>
+          <Link to='/new-ticket'>Booking</Link>
           <li>Contact</li>
         </ul>
       </nav>
@@ -67,11 +67,11 @@ const NewTicket = () => {
           <img src={Cars} alt="cars" className="absolute inset-0 w-full h-60 object-cover z-0" />
           <div className="absolute inset-0 bg-black opacity-80 z-10"></div>
           <div className="relative z-20 flex items-center justify-center h-48">
-            <h2 className="text-4xl font-bold text-white">Ticket Booking</h2>
+            <h2 className="text-4xl font-bold text-white">Ticket-Booking</h2>
           </div>
         </section>
 
-        <div className=" z-20 mb-11 mt-6 flex justify-between items-center sticky top-5 left-0 bg-white">
+        <div className="relative z-20 mb-11 mt-6 flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <div className={`w-10 h-10 flex items-center justify-center ${currentStep >= 1 ? 'bg-blue-600' : 'bg-gray-400'} text-white rounded-full`}>1</div>
             <p className="font-semibold text-gray-700">Enter Ride Details</p>
@@ -93,33 +93,33 @@ const NewTicket = () => {
           </div>
         </div>
 
-        <section className=''>
+        <section>
           {currentStep === 1 && (
             <form onSubmit={handleRideDetailsSubmit}>
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-1">
-                  <h3 className="text-xl font-semibold text-[15px]">Ride Details</h3>
+                  <h3 className="text-xl font-semibold">Ride Details</h3>
                   <div className="mt-4">
-                    <label className="block font-semibold text-[15px]">Pickup Date</label>
-                    <input type="date" name="pickupDate" className="border border-gray-300 p-2 mt-1 w-full"  />
-                    <label className="block font-semibold text-[15px] mt-4">Pickup Time</label>
-                    <input type="time" name="pickupTime" className="border border-gray-300 p-2 mt-1 w-full"  />
-                    <label className="block font-semibold text-[15px] mt-4">Pickup Location</label>
-                    <select name="pickupLocation" className="border border-gray-300 text-[12px] p-2 mt-1 w-full" >
+                    <label className="block font-semibold">Pickup Date</label>
+                    <input type="date" name="pickupDate" className="border p-2 mt-1 w-full" required />
+                    <label className="block font-semibold mt-4">Pickup Time</label>
+                    <input type="time" name="pickupTime" className="border p-2 mt-1 w-full" required />
+                    <label className="block font-semibold mt-4">Pickup Location</label>
+                    <select name="pickupLocation" className="border p-2 mt-1 w-full" required>
                       <option>Kigali</option>
                       <option>Rubavu</option>
                       <option>Musanze</option>
                     </select>
 
-                    <label className="block font-semibold text-[15px] mt-4">Drop-off Location</label>
-                    <select name="dropoffLocation" className="border border-gray-300 text-[12px] p-2 mt-1 w-full" >
+                    <label className="block font-semibold mt-4">Drop-off Location</label>
+                    <select name="dropoffLocation" className="border p-2 mt-1 w-full" required>
                       <option>Kigali</option>
                       <option>Rubavu</option>
                       <option>Musanze</option>
                     </select>
 
-                    <label className="block font-semibold text-[15px] mt-4">Transfer Type</label>
-                    <select name="transferType" className="border border-gray-300 text-[12px] p-2 mt-1 w-full" >
+                    <label className="block font-semibold mt-4">Transfer Type</label>
+                    <select name="transferType" className="border p-2 mt-1 w-full" required>
                       <option>One way</option>
                       <option>Round trip</option>
                     </select>
