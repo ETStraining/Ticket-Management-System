@@ -1,19 +1,34 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from './config.js';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password) {
-      setError('Email and password are required');
+      setError('Email na Password birakenewe');
       return;
     }
-    console.log('Logging in with:', { email, password });
-    setError('');
+
+    try {
+
+      await signInWithEmailAndPassword(auth, email, password);
+      setSuccess('Login irakunzwe!');
+      setError('');
+
+    
+      navigate('/dashboard');
+    } catch (error) {
+      setError(`Error: ${error.message}`);
+      setSuccess('');
+    }
   };
 
   return (
@@ -21,6 +36,7 @@ function Login() {
       <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
         <h1 className="text-2xl font-bold text-center mb-6">Login to Your Account</h1>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+        {success && <p className="text-green-500 text-center mb-4">{success}</p>}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
@@ -29,7 +45,7 @@ function Login() {
             <input
               type="email"
               id="email"
-              className="shadow  border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -42,7 +58,7 @@ function Login() {
             <input
               type="password"
               id="password"
-              className="shadow border-gray-400  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
