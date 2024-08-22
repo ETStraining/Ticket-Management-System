@@ -3,7 +3,7 @@ import { FaFacebookF, FaTwitter, FaMapMarkerAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-indigo-300 via-purple-400 to-pink-300 text-gray-600 pt-10 pb-2 px-8 md:px-20">
+    <footer className="bg-gray-900 text-gray-400 pt-10 pb-2 px-8 md:px-20">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
@@ -52,15 +52,15 @@ const Footer = () => {
           </button>
         </div>
         <hr className="my-8 border-gray-300 w-full" />
-        <div className="text-gray-600 text-sm">
+        <div className="text-gray-400 text-sm">
           <div className="flex justify-between items-center">
-            <div className="flex text-gray-700 space-x-4 mt-2">
+            <div className="flex  space-x-4 mt-2">
               <Link to="" className="hover:text-purple-900">Privacy Policy</Link>
               <Link to="" className="hover:text-purple-900">Terms of Service</Link>
               <Link to="" className="hover:text-purple-900">Contact Us</Link>
             </div>            
             <p>&copy; {new Date().getFullYear()} XCodes. All rights reserved.</p>
-            <div className="flex space-x-4 text-xl text-white">
+            <div className="flex space-x-4 text-xl ">
               <Link to="" className="hover:text-blue-700">
                 <FaFacebookF />
               </Link>
