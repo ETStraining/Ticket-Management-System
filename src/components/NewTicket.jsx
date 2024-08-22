@@ -53,7 +53,7 @@ const NewTicket = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen px-20">
-      <header className="bg-blue-600 text-white p-4 flex justify-between items-center absolute left-0 top-0 w-screen px-20">
+      <header className="bg-indigo-500 text-white p-4 flex justify-between items-center absolute left-0 top-0 w-screen px-20">
         <div className="flex items-center space-x-2">
           <FaPhone className="text-lg" />
           <p>+250 7888 888 888</p>
@@ -70,7 +70,7 @@ const NewTicket = () => {
       <nav className="bg-white shadow-md p-4 flex justify-between items-center mt-8">
         <div className="flex items-center space-x-4">
           <img src={Logo} alt="logo" className="h-20 w-auto" />
-          <h1 className="text-2xl font-bold text-blue-600">TICKET LEAD</h1>
+          <h1 className="text-2xl font-bold text-indigo-500bg-indigo-500">TICKET LEAD</h1>
         </div>
         <ul className="flex space-x-6">
           <Link to="/">Home</Link> 
@@ -89,24 +89,24 @@ const NewTicket = () => {
           </div>
         </section>
 
-        <div className="relative z-20 mb-11 mt-6 flex justify-between items-center">
+        <div className="sticky top-8 bg-white left-0 z-20 mb-11 mt-6 flex justify-between items-center">
           <div className="flex items-center space-x-4">
-            <div className={`w-10 h-10 flex items-center justify-center ${currentStep >= 1 ? 'bg-blue-600' : 'bg-gray-400'} text-white rounded-full`}>1</div>
+            <div className={`w-10 h-10 flex items-center justify-center ${currentStep >= 1 ? 'bg-indigo-500' : 'bg-gray-400'} text-white rounded-full`}>1</div>
             <p className="font-semibold text-gray-700">Enter Ride Details</p>
           </div>
           <div className="flex-1 h-px bg-gray-300"></div>
           <div className="flex items-center space-x-4">
-            <div className={`w-10 h-10 flex items-center justify-center ${currentStep >= 2 ? 'bg-blue-600' : 'bg-gray-400'} text-white rounded-full`}>2</div>
+            <div className={`w-10 h-10 flex items-center justify-center ${currentStep >= 2 ? 'bg-indigo-500' : 'bg-gray-400'} text-white rounded-full`}>2</div>
             <p className="font-semibold text-gray-700">Choose a Vehicle</p>
           </div>
           <div className="flex-1 h-px bg-gray-300"></div>
           <div className="flex items-center space-x-4">
-            <div className={`w-10 h-10 flex items-center justify-center ${currentStep >= 3 ? 'bg-blue-600' : 'bg-gray-400'} text-white rounded-full`}>3</div>
+            <div className={`w-10 h-10 flex items-center justify-center ${currentStep >= 3 ? 'bg-indigo-500' : 'bg-gray-400'} text-white rounded-full`}>3</div>
             <p className="font-semibold text-gray-700">Enter Contact Details</p>
           </div>
           <div className="flex-1 h-px bg-gray-300"></div>
           <div className="flex items-center space-x-4">
-            <div className={`w-10 h-10 flex items-center justify-center ${currentStep >= 4 ? 'bg-blue-600' : 'bg-gray-400'} text-white rounded-full`}>4</div>
+            <div className={`w-10 h-10 flex items-center justify-center ${currentStep >= 4 ? 'bg-indigo-500' : 'bg-gray-400'} text-white rounded-full`}>4</div>
             <p className="font-semibold text-gray-700">Booking Summary</p>
           </div>
         </div>
@@ -142,7 +142,7 @@ const NewTicket = () => {
                       <option>Round trip</option>
                     </select>
 
-                    <button type="submit" className="mt-6 bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-300">
+                    <button type="submit" className="mt-6 bg-indigo-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-300">
                       Continue to Vehicle Selection
                     </button>
                   </div>
