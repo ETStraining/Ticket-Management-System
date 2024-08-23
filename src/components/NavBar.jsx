@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 function NavBar() {
   return (
     <nav className=" hidden sm:flex bg-indigo-500 p-4 md:px-20 fixed top-0 left-0 w-screen z-50
-    border-b border-gray-200">
+    ">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-white text-4xl font-bold">Support Ticket System
+        <div className="text-white text-3xl font-bold overflow-hidden">Support Ticket System
         </div>
         <ul className="flex space-x-4">
           <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">

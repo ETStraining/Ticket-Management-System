@@ -9,9 +9,9 @@ function Hero() {
       backgroundSize: 'cover',
       backgroundPosition: 'center',
     }}
-    className="h-screen w-screen bg-gradient-to-r  flex sm:flex-row flex-col">
+    className="h-screen w-screen bg-gradient-to-r  flex sm:flex-row flex-col ">
       <div className=" w-full h-full flex flex-col justify-center items-center px-10 sm:items-start sm:px-20">
-        <h1 className="text-5xl text-white text-center font-bold mb-4 sm:text-left font-inter">
+        <h1 className="text-2xl text-white text-center font-bold mb-4 sm:text-left font-inter overflow-hidden">
           Streamline Your Support with Our Ticket System
         </h1>
         <p className="text-white text-lg mb-8 sm:text-left">
