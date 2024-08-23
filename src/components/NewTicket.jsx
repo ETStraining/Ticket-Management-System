@@ -10,6 +10,7 @@ import ContactDetail from './ContactDetail';
 import { Link } from 'react-router-dom';
 import { collection, doc, setDoc } from "firebase/firestore";
 import { db } from './config.js'; 
+import Footer from './Footer.jsx';
 
 const NewTicket = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -51,9 +52,9 @@ const NewTicket = () => {
     }
   };
 
-  return (
-    <div className="bg-gray-100 min-h-screen px-20">
-      <header className="bg-indigo-500 text-white p-4 flex justify-between items-center absolute left-0 top-0 w-screen px-20">
+  return (<>
+    <div className="bg-gray-100 min-h-screen px-20 pt-20">
+      <header className="bg-orange-300 text-gray-900 p-4 flex justify-between items-center absolute left-0 top-0 w-screen px-20">
         <div className="flex items-center space-x-2">
           <FaPhone className="text-lg" />
           <p>+250 7888 888 888</p>
@@ -67,7 +68,7 @@ const NewTicket = () => {
         </div>
       </header>
 
-      <nav className="bg-white shadow-md p-4 flex justify-between items-center mt-8">
+      {/* <nav className="bg-white shadow-md p-4 flex justify-between items-center mt-8">
         <div className="flex items-center space-x-4">
           <img src={Logo} alt="logo" className="h-20 w-auto" />
           <h1 className="text-2xl font-bold text-indigo-500bg-indigo-500">TICKET LEAD</h1>
@@ -78,36 +79,36 @@ const NewTicket = () => {
           <Link to='/new-ticket'>Booking</Link>
           <li>Contact</li>
         </ul>
-      </nav>
+      </nav> */}
 
       <main className="p-8">
         <section className="relative bg-white p-6 rounded-lg shadow-lg overflow-hidden">
           <img src={Cars} alt="cars" className="absolute inset-0 w-full h-60 object-cover z-0" />
           <div className="absolute inset-0 bg-black opacity-80 z-10"></div>
           <div className="relative z-20 flex items-center justify-center h-48">
-            <h2 className="text-4xl font-bold text-white">Ticket-Booking</h2>
+            <h2 className="text-4xl font-bold text-white overflow-hidden">Ticket-Booking</h2>
           </div>
         </section>
 
         <div className="sticky top-8 bg-white left-0 z-20 mb-11 mt-6 flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <div className={`w-10 h-10 flex items-center justify-center ${currentStep >= 1 ? 'bg-indigo-500' : 'bg-gray-400'} text-white rounded-full`}>1</div>
-            <p className="font-semibold text-gray-700">Enter Ride Details</p>
+            <p className="font-semibold text-gray-900">Enter Ride Details</p>
           </div>
           <div className="flex-1 h-px bg-gray-300"></div>
           <div className="flex items-center space-x-4">
             <div className={`w-10 h-10 flex items-center justify-center ${currentStep >= 2 ? 'bg-indigo-500' : 'bg-gray-400'} text-white rounded-full`}>2</div>
-            <p className="font-semibold text-gray-700">Choose a Vehicle</p>
+            <p className="font-semibold text-gray-900">Choose a Vehicle</p>
           </div>
           <div className="flex-1 h-px bg-gray-300"></div>
           <div className="flex items-center space-x-4">
             <div className={`w-10 h-10 flex items-center justify-center ${currentStep >= 3 ? 'bg-indigo-500' : 'bg-gray-400'} text-white rounded-full`}>3</div>
-            <p className="font-semibold text-gray-700">Enter Contact Details</p>
+            <p className="font-semibold text-gray-900">Enter Contact Details</p>
           </div>
           <div className="flex-1 h-px bg-gray-300"></div>
           <div className="flex items-center space-x-4">
             <div className={`w-10 h-10 flex items-center justify-center ${currentStep >= 4 ? 'bg-indigo-500' : 'bg-gray-400'} text-white rounded-full`}>4</div>
-            <p className="font-semibold text-gray-700">Booking Summary</p>
+            <p className="font-semibold text-gray-900">Booking Summary</p>
           </div>
         </div>
 
@@ -198,6 +199,8 @@ const NewTicket = () => {
         </section>
       </main>
     </div>
+    <Footer/>
+    </>
   );
 };
 

@@ -8,10 +8,10 @@ import Departures from './components/Departures';
 function App() {
   return (
     <div className=' text-cent'>
-      <NavBar/>    
+      {/* <NavBar/>     */}
       <Hero/>
       <Departures/>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   )
 }
