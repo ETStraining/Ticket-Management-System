@@ -1,21 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import bgImage from '../assets/bgimage.png'
+import React from "react";
+import { Link } from "react-router-dom";
+import bgImage from "../assets/bgimage.png";
 
 function Hero() {
   return (
-    <div  style={{
-      backgroundImage: `url(${bgImage})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-    }}
-    className="h-screen w-screen bg-gradient-to-r  flex sm:flex-row flex-col ">
+    <div
+      style={{
+        backgroundImage: `url(${bgImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+      className="h-screen w-screen bg-gradient-to-r  flex sm:flex-row flex-col "
+    >
       <div className=" w-full h-full flex flex-col justify-center items-center px-10 sm:items-start sm:px-20">
         <h1 className="text-2xl text-white text-center font-bold mb-4 sm:text-left font-inter overflow-hidden">
           Streamline Your Support with Our Ticket System
         </h1>
         <p className="text-white text-lg mb-8 sm:text-left">
-          Get quick and efficient support for your issues. Submit a ticket and our dedicated team will assist you promptly.
+          Get quick and efficient support for your issues. Submit a ticket and
+          our dedicated team will assist you promptly.
         </p>
         <div className="flex justify-center sm:justify-start md: mt-10 items-center">
           <Link
@@ -24,10 +27,7 @@ function Hero() {
           >
             Book Your Ticket Now
           </Link>
-          <Link
-            to="/"
-            className="text-white hover:text-gray-200 font-medium"
-          >
+          <Link to="/" className="text-white hover:text-gray-200 font-medium">
             View FAQs
           </Link>
         </div>
@@ -36,7 +36,8 @@ function Hero() {
         <div className="max-w-md p-6 bg-white rounded-lg shadow-md">
           <h1 className="text-3xl font-bold mb-4">Get Prompt Assistance</h1>
           <p className="mb-6">
-            Our support team is dedicated to resolving your issues quickly and efficiently.
+            Our support team is dedicated to resolving your issues quickly and
+            efficiently.
           </p>
           <div className="flex justify-end">
             <Link

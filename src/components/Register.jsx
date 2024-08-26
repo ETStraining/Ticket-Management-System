@@ -1,65 +1,72 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { setDoc, doc } from 'firebase/firestore';
-import { auth, db } from './config.js';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { setDoc, doc } from "firebase/firestore";
+import { auth, db } from "./config.js";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [telephone, setTelephone] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [telephone, setTelephone] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!fullName || !email || !telephone || !password || !confirmPassword) {
-      setError('Fill all fields');
+      setError("Fill all fields");
       return;
     }
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      setError("Passwords do not match");
       return;
     }
 
     try {
-     
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
-      
-     
-      await setDoc(doc(db, 'users', user.uid), {
+
+      await setDoc(doc(db, "users", user.uid), {
         fullName,
         email,
         telephone,
       });
 
-     
-      setSuccess('Registration successful! You can now log in.');
-      setError('');
+      setSuccess("Registration successful! You can now log in.");
+      setError("");
 
-      
-      navigate('/login');
+      navigate("/login");
     } catch (error) {
       setError(`Error: ${error.message}`);
-      setSuccess('');
+      setSuccess("");
     }
   };
 
   return (
     <div className="fixed top-0 left-0 overflow-y-auto h-screen w-screen flex items-center justify-center bg-white ">
       <div className="bg-gray-300 rounded-lg shadow-lg p-5 max-w-md w-full flex flex-col justify-between">
-        <h1 className="text-2xl font-bold text-center mb-6">Create Your Account</h1>
+        <h1 className="text-2xl font-bold text-center mb-6">
+          Create Your Account
+        </h1>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-        {success && <p className="text-green-500 text-center mb-4">{success}</p>}
+        {success && (
+          <p className="text-green-500 text-center mb-4">{success}</p>
+        )}
         <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
           <div>
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="fullName">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="fullName"
+            >
               Full Name
             </label>
             <input
@@ -71,7 +78,10 @@ function Register() {
             />
           </div>
           <div>
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="email"
+            >
               Email
             </label>
             <input
@@ -83,7 +93,10 @@ function Register() {
             />
           </div>
           <div>
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="telephone">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="telephone"
+            >
               Telephone Number
             </label>
             <input
@@ -95,7 +108,10 @@ function Register() {
             />
           </div>
           <div>
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="password"
+            >
               Password
             </label>
             <input
@@ -107,7 +123,10 @@ function Register() {
             />
           </div>
           <div>
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="confirmPassword">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="confirmPassword"
+            >
               Confirm Password
             </label>
             <input
@@ -128,7 +147,10 @@ function Register() {
           </div>
         </form>
         <p className="text-center text-gray-600 text-sm mt-4">
-          Already have an account? <Link to="/login" className="text-indigo-500 hover:text-indigo-700">Login here</Link>
+          Already have an account?{" "}
+          <Link to="/login" className="text-indigo-500 hover:text-indigo-700">
+            Login here
+          </Link>
         </p>
       </div>
     </div>

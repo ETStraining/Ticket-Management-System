@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const vehicles = [
   {
     id: 1,
-    name: 'Sedan',
-    times: ['08:00', '08:30', '09:00', '09:30', '10:00'],
+    name: "Coast",
+    times: ["08:00", "08:30", "09:00", "09:30", "10:00"],
   },
   {
     id: 2,
-    name: 'SUV',
-    times: ['09:00', '09:30', '10:00', '10:30', '11:00'],
+    name: "Bus",
+    times: ["09:00", "09:30", "10:00", "10:30", "11:00"],
   },
   {
     id: 3,
-    name: 'Van',
-    times: ['10:00', '10:30', '11:00', '11:30', '12:00'],
+    name: "Tax",
+    times: ["10:00", "10:30", "11:00", "11:30", "12:00"],
   },
 ];
 
 const Vehicle = ({ onVehicleSelect }) => {
   const [selectedVehicle, setSelectedVehicle] = useState(null);
-  const [selectedTime, setSelectedTime] = useState('');
+  const [selectedTime, setSelectedTime] = useState("");
 
   const handleVehicleChange = (e) => {
     const vehicle = vehicles.find((v) => v.id === parseInt(e.target.value, 10));
     setSelectedVehicle(vehicle);
-    setSelectedTime('');
+    setSelectedTime("");
   };
 
   const handleTimeChange = (e) => {
@@ -44,12 +44,14 @@ const Vehicle = ({ onVehicleSelect }) => {
         <div className="mt-4">
           <label className="block font-semibold">Vehicle</label>
           <select
-            value={selectedVehicle?.id || ''}
+            value={selectedVehicle?.id || ""}
             onChange={handleVehicleChange}
             className="border border-gray-300 rounded p-2 mt-1 w-full"
             required
           >
-            <option value="" disabled>Select a vehicle</option>
+            <option value="" disabled>
+              Select a vehicle
+            </option>
             {vehicles.map((vehicle) => (
               <option key={vehicle.id} value={vehicle.id}>
                 {vehicle.name}
@@ -66,7 +68,9 @@ const Vehicle = ({ onVehicleSelect }) => {
               className="border border-gray-300 rounded p-2 mt-1 w-full"
               required
             >
-              <option value="" disabled>Select a time</option>
+              <option value="" disabled>
+                Select a time
+              </option>
               {selectedVehicle.times.map((time) => (
                 <option key={time} value={time}>
                   {time}

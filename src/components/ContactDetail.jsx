@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
-import { FaUser, FaPhone, FaEnvelope, FaCreditCard, FaPaypal, FaMobileAlt } from 'react-icons/fa';
+import React, { useState } from "react";
+import {
+  FaUser,
+  FaPhone,
+  FaEnvelope,
+  FaCreditCard,
+  FaPaypal,
+  FaMobileAlt,
+} from "react-icons/fa";
 
 const ContactDetail = ({ onSubmit }) => {
   const [contactInfo, setContactInfo] = useState({
-    fullName: '',
-    phoneNumber: '',
-    email: '',
-    paymentMethod: '',
+    fullName: "",
+    phoneNumber: "",
+    email: "",
+    paymentMethod: "",
   });
 
   const handleInputChange = (e) => {
@@ -27,7 +34,10 @@ const ContactDetail = ({ onSubmit }) => {
       <h2 className="text-2xl font-bold mb-6">Enter Contact Details</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
+          <label
+            htmlFor="fullName"
+            className="block text-sm font-medium text-gray-700 mb-2"
+          >
             <FaUser className="inline mr-2" />
             Full Name
           </label>
@@ -43,7 +53,10 @@ const ContactDetail = ({ onSubmit }) => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700 mb-2">
+          <label
+            htmlFor="phoneNumber"
+            className="block text-sm font-medium text-gray-700 mb-2"
+          >
             <FaPhone className="inline mr-2" />
             Phone Number
           </label>
@@ -59,7 +72,10 @@ const ContactDetail = ({ onSubmit }) => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-700 mb-2"
+          >
             <FaEnvelope className="inline mr-2" />
             Email Address
           </label>
@@ -84,7 +100,7 @@ const ContactDetail = ({ onSubmit }) => {
                 type="radio"
                 name="paymentMethod"
                 value="creditCard"
-                checked={contactInfo.paymentMethod === 'creditCard'}
+                checked={contactInfo.paymentMethod === "creditCard"}
                 onChange={handleInputChange}
                 className="mr-2"
               />
@@ -96,7 +112,7 @@ const ContactDetail = ({ onSubmit }) => {
                 type="radio"
                 name="paymentMethod"
                 value="paypal"
-                checked={contactInfo.paymentMethod === 'paypal'}
+                checked={contactInfo.paymentMethod === "paypal"}
                 onChange={handleInputChange}
                 className="mr-2"
               />
@@ -108,7 +124,7 @@ const ContactDetail = ({ onSubmit }) => {
                 type="radio"
                 name="paymentMethod"
                 value="mobileMoney"
-                checked={contactInfo.paymentMethod === 'mobileMoney'}
+                checked={contactInfo.paymentMethod === "mobileMoney"}
                 onChange={handleInputChange}
                 className="mr-2"
               />

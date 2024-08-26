@@ -1,6 +1,6 @@
-import React from 'react';
-import { FaFacebookF, FaTwitter, FaMapMarkerAlt } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { FaFacebookF, FaTwitter, FaMapMarkerAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-400 pt-10 pb-2 px-8 md:px-20">
@@ -55,11 +55,19 @@ const Footer = () => {
         <div className="text-gray-400 text-sm">
           <div className="flex justify-between items-center">
             <div className="flex  space-x-4 mt-2">
-              <Link to="" className="hover:text-purple-900">Privacy Policy</Link>
-              <Link to="" className="hover:text-purple-900">Terms of Service</Link>
-              <Link to="" className="hover:text-purple-900">Contact Us</Link>
-            </div>            
-            <p>&copy; {new Date().getFullYear()} XCodes. All rights reserved.</p>
+              <Link to="" className="hover:text-purple-900">
+                Privacy Policy
+              </Link>
+              <Link to="" className="hover:text-purple-900">
+                Terms of Service
+              </Link>
+              <Link to="" className="hover:text-purple-900">
+                Contact Us
+              </Link>
+            </div>
+            <p>
+              &copy; {new Date().getFullYear()} XCodes. All rights reserved.
+            </p>
             <div className="flex space-x-4 text-xl ">
               <Link to="" className="hover:text-blue-700">
                 <FaFacebookF />

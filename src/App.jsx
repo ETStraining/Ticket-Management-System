@@ -1,9 +1,8 @@
 import React from 'react'
-import NavBar from './components/NavBar'
 import Hero from './components/Hero'
-import Footer from './components/Footer'
 import 'leaflet/dist/leaflet.css';
 import Departures from './components/Departures';
+import Vision from './components/Vision';
 
 function App() {
   return (
@@ -11,6 +10,7 @@ function App() {
       {/* <NavBar/>     */}
       <Hero/>
       <Departures/>
+      <Vision/>
       {/* <Footer/> */}
     </div>
   )

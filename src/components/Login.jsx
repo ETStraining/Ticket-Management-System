@@ -1,45 +1,50 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from './config.js';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./config.js";
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password) {
-      setError('Email na Password birakenewe');
+      setError("Email na Password birakenewe");
       return;
     }
 
     try {
-
       await signInWithEmailAndPassword(auth, email, password);
-      setSuccess('Login irakunzwe!');
-      setError('');
+      setSuccess("Login irakunzwe!");
+      setError("");
 
-    
-      navigate('/dashboard');
+      navigate("/dashboard");
     } catch (error) {
       setError(`Error: ${error.message}`);
-      setSuccess('');
+      setSuccess("");
     }
   };
 
   return (
     <div className="h-screen w-screen flex items-center justify-center bg-white">
       <div className="bg-gray-300 rounded-lg shadow-lg p-8 max-w-md w-full">
-        <h1 className="text-2xl font-bold text-center mb-6">Login to Your Account</h1>
+        <h1 className="text-2xl font-bold text-center mb-6">
+          Login to Your Account
+        </h1>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-        {success && <p className="text-green-500 text-center mb-4">{success}</p>}
+        {success && (
+          <p className="text-green-500 text-center mb-4">{success}</p>
+        )}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="email"
+            >
               Email
             </label>
             <input
@@ -52,7 +57,10 @@ function Login() {
             />
           </div>
           <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="password"
+            >
               Password
             </label>
             <input
@@ -74,7 +82,13 @@ function Login() {
           </div>
         </form>
         <p className="text-center text-gray-600 text-sm mt-4">
-          Don't have an account? <Link to="/register" className="text-indigo-500 hover:text-indigo-700">Register here</Link>
+          Don't have an account?{" "}
+          <Link
+            to="/register"
+            className="text-indigo-500 hover:text-indigo-700"
+          >
+            Register here
+          </Link>
         </p>
       </div>
     </div>
