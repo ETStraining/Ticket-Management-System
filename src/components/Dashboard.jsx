@@ -51,7 +51,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="flex h-screen bg-gray-100 text-sm pt-20">
+    <div className="flex h-screen bg-gray-100 text-sm pt-4 mb-4">
       {/* Sidebar */}
       <div className="w-56 bg-white shadow-md">
         <div className="p-3 text-lg font-bold">ALL TICKETS</div>

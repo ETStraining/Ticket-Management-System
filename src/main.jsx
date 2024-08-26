@@ -18,10 +18,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
         <Route element={<OutletFile />}>
           <Route path="/" element={<App />} />
-          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact-detail" element={<ContactDetail />} />
         </Route>
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/new-ticket" element={<NewTicket />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
