@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import {
   FiGrid,
   FiUsers,
@@ -12,6 +14,7 @@ import {
 } from "react-icons/fi";
 
 const Dashboard = () => {
+  const navigate =useNavigate()
   const [selectedTab, setSelectedTab] = useState("All Tickets");
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -48,7 +51,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="flex h-screen bg-gray-100 text-sm">
+    <div className="flex h-screen bg-gray-100 text-sm pt-20">
       {/* Sidebar */}
       <div className="w-56 bg-white shadow-md">
         <div className="p-3 text-lg font-bold">ALL TICKETS</div>
@@ -95,11 +98,8 @@ const Dashboard = () => {
           </div>
         </header>
 
-        {/* Content */}
         <main className="p-4 overflow-auto h-[calc(100vh-56px)]">
           <h2 className="text-[22px] font-semibold mb-4">Tickets</h2>
-
-          {/* Search and Filters */}
           <div className="flex justify-between mb-4">
             <div className="relative">
               <input
@@ -116,13 +116,11 @@ const Dashboard = () => {
               <select className="border rounded-md px-3 py-1.5 text-[13px]">
                 <option>This Week</option>
               </select>
-              <button className="bg-purple-600 text-white px-3 py-1.5 rounded-md flex items-center text-[13px]">
-                <FiPlus className="mr-1.5 text-[13px]" /> New Ticket
+              <button onClick={()=>navigate("/new-ticket")} className="bg-purple-600 text-white px-3 py-1.5 rounded-md flex items-center text-[13px]">
+                <FiPlus className="mr-1.5 text-[13px]" />New Ticket
               </button>
             </div>
           </div>
-
-          {/* Tabs */}
           <div className="flex space-x-3 mb-4">
             {["All Tickets", "New", "On-Going", "Resolved"].map((tab) => (
               <button
@@ -138,8 +136,6 @@ const Dashboard = () => {
               </button>
             ))}
           </div>
-
-          {/* Ticket List */}
           <div className="space-y-3">
             {tickets.map((ticket) => (
               <div key={ticket.id} className="bg-white p-3 rounded-md shadow">
@@ -190,8 +186,6 @@ const Dashboard = () => {
               </div>
             ))}
           </div>
-
-          {/* Pagination */}
           <div className="flex justify-center mt-4">
             <button
               className="px-3 py-1.5 rounded-md bg-purple-600 text-white text-[13px]"
