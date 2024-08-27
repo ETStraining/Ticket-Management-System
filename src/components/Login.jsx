@@ -31,7 +31,7 @@ function Login() {
 
   return (
     <div className="h-screen w-screen flex items-center justify-center bg-white">
-      <div className="bg-gray-300 rounded-lg shadow-lg p-8 max-w-md w-full">
+      <div className="rounded-lg shadow-custom p-8 max-w-md w-full">
         <h1 className="text-2xl font-bold text-center mb-6">
           Login to Your Account
         </h1>

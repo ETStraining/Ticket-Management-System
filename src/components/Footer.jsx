@@ -53,7 +53,7 @@ const Footer = () => {
         </div>
         <hr className="my-8 border-gray-300 w-full" />
         <div className="text-gray-400 text-sm">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center flex-wrap sm:flex-nowrap">
             <div className="flex  space-x-4 mt-2">
               <Link to="" className="hover:text-purple-900">
                 Privacy Policy

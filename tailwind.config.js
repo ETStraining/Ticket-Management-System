@@ -7,11 +7,13 @@ export default {
 
   theme: {
     extend: {
-      fontFamily:{
-        inter:["Inter", "sans-serif"]
+      fontFamily: {
+        inter: ["Inter", "sans-serif"]
+      },
+      boxShadow: {
+        'custom': '1px 4px 6px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.3)',
       },
     },
   },
   plugins: [],
 }
-

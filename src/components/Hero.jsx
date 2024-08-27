@@ -10,7 +10,7 @@ function Hero() {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-      className="h-screen w-screen bg-gradient-to-r  flex sm:flex-row flex-col "
+      className="h-screen w-screen bg-gradient-to-r  flex sm:flex-row flex-col pt-10 sm:pt-0 "
     >
       <div className=" w-full h-full flex flex-col justify-center items-center px-10 sm:items-start sm:px-20">
         <h1 className="text-2xl text-white text-center font-bold mb-4 sm:text-left font-inter overflow-hidden">

@@ -55,50 +55,37 @@ const NewTicket = () => {
 
   return (
     <>
-      <div className="bg-gray-100 min-h-screen px-20 pt-20">
-        <header className="bg-orange-300 text-gray-900 p-4 flex justify-between items-center absolute left-0 top-0 w-screen px-20">
+      <div className="bg-gray-100 min-h-screen px-4 sm:px-8 md:px-20 pt-20">
+        <header className="bg-orange-300 text-gray-900 p-4 flex flex-col sm:flex-row justify-between items-center fixed sm:h-16 left-0 top-0 w-full z-30">
           <div className="flex items-center space-x-2">
             <FaPhone className="text-lg" />
-            <p>+250 7888 888 888</p>
+            <div>+250 7888 888 888</div>
           </div>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2  sm:mt-0">
             <FaEnvelope className="text-lg" />
-            <p>ticketlead@gmail.com</p>
+            <div>ticketlead@gmail.com</div>
           </div>
-          <div>
+          <div className=" sm:mt-0">
             <span className="text-lg">Hi, Devcent!</span>
           </div>
         </header>
 
-        {/* <nav className="bg-white shadow-md p-4 flex justify-between items-center mt-8">
-        <div className="flex items-center space-x-4">
-          <img src={Logo} alt="logo" className="h-20 w-auto" />
-          <h1 className="text-2xl font-bold text-indigo-500bg-indigo-500">TICKET LEAD</h1>
-        </div>
-        <ul className="flex space-x-6">
-          <Link to="/">Home</Link> 
-          <Link to=''>About</Link>
-          <Link to='/new-ticket'>Booking</Link>
-          <li>Contact</li>
-        </ul>
-      </nav> */}
-
-        <main className="p-8">
-          <section className="relative bg-white p-6 rounded-lg shadow-lg overflow-hidden">
+        <main className="p-4 sm:p-8">
+          <section className="relative bg-white p-4 sm:p-6 rounded-lg shadow-lg overflow-hidden">
             <img
               src={Cars}
               alt="cars"
-              className="absolute inset-0 w-full h-60 object-cover z-0"
+              className="absolute inset-0 w-full h-48 sm:h-60 object-cover z-0"
             />
             <div className="absolute inset-0 bg-black opacity-80 z-10"></div>
             <div className="relative z-20 flex items-center justify-center h-48">
-              <h2 className="text-4xl font-bold text-white overflow-hidden">
+              <h2 className="text-2xl sm:text-4xl font-bold text-white text-center overflow-hidden">
                 Ticket-Booking
               </h2>
             </div>
           </section>
 
-          <div className="sticky top-8 bg-white left-0 z-20 mb-11 mt-6 flex justify-between items-center">
+          <div className="sticky top-8 bg-white left-0 z-20 mb-11 mt-6 flex flex-col sm:flex-row justify-between sm:items-center space-y-4 sm:space-y-0">
             <div className="flex items-center space-x-4">
               <div
                 className={`w-10 h-10 flex items-center justify-center ${
@@ -107,9 +94,11 @@ const NewTicket = () => {
               >
                 1
               </div>
-              <p className="font-semibold text-gray-900">Enter Ride Details</p>
+              <p className="font-semibold text-gray-900 text-center">
+                Enter Ride Details
+              </p>
             </div>
-            <div className="flex-1 h-px bg-gray-300"></div>
+            <div className="flex-1 h-px bg-gray-300 hidden sm:block"></div>
             <div className="flex items-center space-x-4">
               <div
                 className={`w-10 h-10 flex items-center justify-center ${
@@ -118,9 +107,11 @@ const NewTicket = () => {
               >
                 2
               </div>
-              <p className="font-semibold text-gray-900">Choose a Vehicle</p>
+              <p className="font-semibold text-gray-900 text-center">
+                Choose a Vehicle
+              </p>
             </div>
-            <div className="flex-1 h-px bg-gray-300"></div>
+            <div className="flex-1 h-px bg-gray-300 hidden sm:block"></div>
             <div className="flex items-center space-x-4">
               <div
                 className={`w-10 h-10 flex items-center justify-center ${
@@ -129,11 +120,11 @@ const NewTicket = () => {
               >
                 3
               </div>
-              <p className="font-semibold text-gray-900">
+              <p className="font-semibold text-gray-900 text-center">
                 Enter Contact Details
               </p>
             </div>
-            <div className="flex-1 h-px bg-gray-300"></div>
+            <div className="flex-1 h-px bg-gray-300 hidden sm:block"></div>
             <div className="flex items-center space-x-4">
               <div
                 className={`w-10 h-10 flex items-center justify-center ${
@@ -142,16 +133,20 @@ const NewTicket = () => {
               >
                 4
               </div>
-              <p className="font-semibold text-gray-900">Booking Summary</p>
+              <p className="font-semibold text-gray-900 text-center">
+                Booking Summary
+              </p>
             </div>
           </div>
 
           <section>
             {currentStep === 1 && (
               <form onSubmit={handleRideDetailsSubmit}>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="col-span-1">
-                    <h3 className="text-xl font-semibold">Ride Details</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold">
+                      Ride Details
+                    </h3>
                     <div className="mt-4">
                       <label className="block font-semibold">Pickup Date</label>
                       <input
@@ -209,7 +204,7 @@ const NewTicket = () => {
 
                       <button
                         type="submit"
-                        className="mt-6 bg-indigo-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-300"
+                        className="mt-6 w-full sm:w-auto bg-indigo-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-300"
                       >
                         Continue to Vehicle Selection
                       </button>
@@ -217,18 +212,20 @@ const NewTicket = () => {
                   </div>
 
                   <div className="col-span-1">
-                    <h3 className="text-xl font-semibold mb-4">Route Map</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold mb-4">
+                      Route Map
+                    </h3>
                     <MapContainer
                       center={[-1.9403, 29.8739]}
                       zoom={7}
-                      className="h-64 w-full"
+                      className="h-48 sm:h-64 w-full rounded-lg overflow-hidden shadow"
                     >
                       <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                       />
                       <Marker position={[-1.9403, 29.8739]}>
-                        <Popup>Kigali, Rwanda</Popup>
+                        <Popup>Kigali</Popup>
                       </Marker>
                     </MapContainer>
                   </div>
@@ -237,7 +234,7 @@ const NewTicket = () => {
             )}
 
             {currentStep === 2 && (
-              <Vehicle onVehicleSelect={handleVehicleSelect} />
+              <Vehicle onSelect={handleVehicleSelect} rideDetails={rideDetails} />
             )}
 
             {currentStep === 3 && (
@@ -245,46 +242,41 @@ const NewTicket = () => {
             )}
 
             {currentStep === 4 && (
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h2 className="text-2xl font-bold mb-6">Booking Summary</h2>
-                <p>
+              <div className="p-6 bg-white rounded-lg shadow-md">
+                <h3 className="text-lg sm:text-xl font-semibold mb-4">
+                  Booking Summary
+                </h3>
+                <p className="mb-2">
                   <strong>Pickup Date:</strong> {rideDetails.pickupDate}
                 </p>
-                <p>
+                <p className="mb-2">
                   <strong>Pickup Time:</strong> {rideDetails.pickupTime}
                 </p>
-                <p>
+                <p className="mb-2">
                   <strong>Pickup Location:</strong> {rideDetails.pickupLocation}
                 </p>
-                <p>
+                <p className="mb-2">
                   <strong>Drop-off Location:</strong>{" "}
                   {rideDetails.dropoffLocation}
                 </p>
-                <p>
+                <p className="mb-2">
                   <strong>Transfer Type:</strong> {rideDetails.transferType}
                 </p>
-                <p>
-                  <strong>Vehicle:</strong> {selectedVehicle?.name}
-                </p>
-                <p>
-                  <strong>Pickup Time:</strong> {selectedVehicle?.selectedTime}
-                </p>
-                <p>
-                  <strong>Full Name:</strong> {contactInfo.fullName}
-                </p>
-                <p>
-                  <strong>Phone Number:</strong> {contactInfo.phoneNumber}
-                </p>
-                <p>
-                  <strong>Email:</strong> {contactInfo.email}
+                <p className="mb-2">
+                  <strong>Selected Vehicle:</strong> {selectedVehicle.name}
                 </p>
                 <p className="mb-2">
-                  <strong>Payment Method:</strong> {contactInfo.paymentMethod}
+                  <strong>Contact Name:</strong> {contactInfo.name}
                 </p>
-
+                <p className="mb-2">
+                  <strong>Contact Email:</strong> {contactInfo.email}
+                </p>
+                <p className="mb-2">
+                  <strong>Contact Phone:</strong> {contactInfo.phone}
+                </p>
                 <button
                   onClick={handleConfirmBooking}
-                  className="mt-6 bg-green-600 text-white font-bold py-2 px-4 rounded hover:bg-green-700 transition duration-300"
+                  className="w-full sm:w-auto bg-indigo-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-300 mt-6"
                 >
                   Confirm Booking
                 </button>

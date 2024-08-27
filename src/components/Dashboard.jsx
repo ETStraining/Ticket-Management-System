@@ -14,7 +14,7 @@ import {
 } from "react-icons/fi";
 
 const Dashboard = () => {
-  const navigate =useNavigate()
+  const navigate = useNavigate();
   const [selectedTab, setSelectedTab] = useState("All Tickets");
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -51,9 +51,8 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="flex h-screen bg-gray-100 text-sm pt-4 mb-4">
-      {/* Sidebar */}
-      <div className="w-56 bg-white shadow-md">
+    <div className=" flex h-screen bg-gray-100 text-sm pt-4 mb-4">
+      <div className="hidden sm:block md:w-56 bg-white shadow-md">
         <div className="p-3 text-lg font-bold">ALL TICKETS</div>
         <nav>
           {sidebarItems.map((item, index) => (
@@ -68,10 +67,7 @@ const Dashboard = () => {
           ))}
         </nav>
       </div>
-
-      {/* Main Content */}
       <div className="flex-1 overflow-hidden">
-        {/* Header */}
         <header className="bg-white shadow-sm">
           <div className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center">
@@ -105,7 +101,7 @@ const Dashboard = () => {
               <input
                 type="text"
                 placeholder="Search for ticket"
-                className="pl-8 pr-3 py-1.5 text-[13px] border rounded-md"
+                className="pl-8 pr-3 py-1.5 text-[13px] border rounded-md w-full"
               />
               <FiSearch className="absolute left-2.5 top-2 text-gray-400 text-[13px]" />
             </div>
@@ -116,8 +112,12 @@ const Dashboard = () => {
               <select className="border rounded-md px-3 py-1.5 text-[13px]">
                 <option>This Week</option>
               </select>
-              <button onClick={()=>navigate("/new-ticket")} className="bg-purple-600 text-white px-3 py-1.5 rounded-md flex items-center text-[13px]">
-                <FiPlus className="mr-1.5 text-[13px]" />New Ticket
+              <button
+                onClick={() => navigate("/new-ticket")}
+                className="bg-indigo-500 text-white px-3 py-1.5 rounded-md flex items-center text-[13px]"
+              >
+                <FiPlus className="mr-1.5 text-[13px]" />
+                New Ticket
               </button>
             </div>
           </div>
@@ -127,8 +127,8 @@ const Dashboard = () => {
                 key={tab}
                 className={`px-3 py-1.5 rounded-md text-[13px] ${
                   selectedTab === tab
-                    ? "bg-purple-100 text-purple-600"
-                    : "text-gray-600"
+                    ? "text-white bg-indigo-600 "
+                    : "text-gray-900"
                 }`}
                 onClick={() => setSelectedTab(tab)}
               >
@@ -166,7 +166,7 @@ const Dashboard = () => {
                 <h3 className="font-semibold mb-1.5 text-[13px]">
                   {ticket.title}
                 </h3>
-                <p className="text-gray-600 mb-3 text-[13px]">
+                <p className="text-gray-900 mb-3 text-[13px]">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
                   ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
@@ -179,7 +179,7 @@ const Dashboard = () => {
                     />
                     <span className="text-[13px]">{ticket.user}</span>
                   </div>
-                  <button className="text-purple-600 text-[13px]">
+                  <button className="text-indigo-500 text-[13px]">
                     Open Ticket
                   </button>
                 </div>
@@ -188,19 +188,19 @@ const Dashboard = () => {
           </div>
           <div className="flex justify-center mt-4">
             <button
-              className="px-3 py-1.5 rounded-md bg-purple-600 text-white text-[13px]"
+              className="px-3 py-1.5 rounded-md bg-indigo-500 text-white text-[13px]"
               onClick={() => setCurrentPage(1)}
             >
               1
             </button>
             <button
-              className="px-3 py-1.5 rounded-md text-gray-600 text-[13px]"
+              className="px-3 py-1.5 rounded-md text-gray-900 text-[13px]"
               onClick={() => setCurrentPage(2)}
             >
               2
             </button>
             <button
-              className="px-3 py-1.5 rounded-md text-gray-600 text-[13px]"
+              className="px-3 py-1.5 rounded-md text-gray-9ll00 text-[13px]"
               onClick={() => setCurrentPage(currentPage + 1)}
             >
               Next
