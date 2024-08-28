@@ -11,6 +11,7 @@ import Dashboard from "./components/Dashboard.jsx";
 import NewTicket from "./components/NewTicket.jsx";
 import ContactDetail from "./components/ContactDetail.jsx";
 import About from "./components/About.jsx";
+import Users from "./components/Users.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -25,6 +26,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/new-ticket" element={<NewTicket />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/users" element={<Users />} />
       </Routes>
     </Router>
   </React.StrictMode>

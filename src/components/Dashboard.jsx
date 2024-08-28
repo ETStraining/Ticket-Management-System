@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -51,14 +52,14 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className=" flex h-screen bg-gray-100 text-sm pt-4 mb-4">
+    <div className="flex h-screen bg-gray-100 text-sm pt-4 mb-4">
       <div className="hidden sm:block md:w-56 bg-white shadow-md">
         <div className="p-3 text-lg font-bold">ALL TICKETS</div>
         <nav>
           {sidebarItems.map((item, index) => (
             <a
               key={index}
-              href="#"
+              href="users"
               className="flex items-center p-3 text-gray-700 hover:bg-purple-100"
             >
               <item.icon className="mr-3 text-sm" />
@@ -200,7 +201,7 @@ const Dashboard = () => {
               2
             </button>
             <button
-              className="px-3 py-1.5 rounded-md text-gray-9ll00 text-[13px]"
+              className="px-3 py-1.5 rounded-md text-gray-900 text-[13px]"
               onClick={() => setCurrentPage(currentPage + 1)}
             >
               Next
