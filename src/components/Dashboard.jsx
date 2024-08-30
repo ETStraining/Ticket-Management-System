@@ -11,7 +11,10 @@ import {
   FiChevronDown,
   FiSearch,
   FiPlus,
+  FiMenu,
 } from "react-icons/fi";
+import Settings from "./Settings";
+import Tickets from "./Tickets";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -43,47 +46,56 @@ const Dashboard = () => {
     },
   ];
 
+  const getDivClass = (divName) => {
+    return activeDiv === divName 
+      ? "flex items-center p-3 text-gray-950 bg-gray-300 cursor-pointer"  
+      : "flex items-center p-3 text-gray-950 hover:bg-gray-200 cursor-pointer";  
+  };
+
   return (
     <div className="flex md:h-screen bg-gray-100 text-sm pt-4 mb-4 w-screen md:overflow-y-hidden md:fixed md:left-0 md:top-0 md:overflow-hidden ">
       <div className="hidden sm:block md:w-56 bg-white shadow-md">
         <div className="p-3 text-lg font-bold">ALL TICKETS</div>
         <nav>
-          <div onClick={()=>setActiveDiv("Dashboard")}
-            className="flex items-center p-3 text-gray-700 hover:bg-purple-200 cursor-pointer"
-          >
-            <FiGrid className="mr-3 text-sm" />
-            <span>Dashboard</span>
-          </div>
-          <div  onClick={()=>setActiveDiv("Users")}
-            className="flex items-center p-3 text-gray-700 hover:bg-purple-200 cursor-pointer"
-          >
-            <FiUsers className="mr-3 text-sm" />
-            <span>Users</span>          
-          </div>
-          <div onClick={()=>setActiveDiv("Tickets")}
-            className="flex items-center p-3 text-gray-700 hover:bg-purple-200 cursor-pointer"
-          >
-            <FiTag className="mr-3 text-sm" />
-            <span>Tickets</span>
-          </div>
-          <div onClick={()=>setActiveDiv("Officials")}
-            className="flex items-center p-3 text-gray-700 hover:bg-purple-200 cursor-pointer"
-          >
-            <FiUserCheck className="mr-3 text-sm" />
-            <span>Officials</span>
-          </div>
-          <div onClick={()=>setActiveDiv("Settings")}
-            className="flex items-center p-3 text-gray-700 hover:bg-purple-200 cursor-pointer"
-          >
-            <FiSettings className="mr-3 text-sm" />
-            <span>Site Settings</span>
-          </div>
-        </nav>
+        <div onClick={() => setActiveDiv("Dashboard")}
+          className={getDivClass("Dashboard")}
+        >
+          <FiGrid className="mr-3 text-sm" />
+          <span>Dashboard</span>
+        </div>
+        <div onClick={() => setActiveDiv("Users")}
+          className={getDivClass("Users")}
+        >
+          <FiUsers className="mr-3 text-sm" />
+          <span>Users</span>          
+        </div>
+        <div onClick={() => setActiveDiv("Tickets")}
+          className={getDivClass("Tickets")}
+        >
+          <FiTag className="mr-3 text-sm" />
+          <span>Tickets</span>
+        </div>
+        <div onClick={() => setActiveDiv("Officials")}
+          className={getDivClass("Officials")}
+        >
+          <FiUserCheck className="mr-3 text-sm" />
+          <span>Officials</span>
+        </div>
+        <div onClick={() => setActiveDiv("Settings")}
+          className={getDivClass("Settings")}
+        >
+          <FiSettings className="mr-3 text-sm" />
+          <span>Site Settings</span>
+        </div>
+      </nav>
       </div>
       <div className="flex-1 overflow-hidden">
-        <header className="bg-white shadow-sm">
+              <header className="bg-white shadow-sm">
           <div className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center">
+              <button className="mr-4 md:hidden">
+                <FiMenu className="text-gray-900 text-sm h-8 w-6" />
+              </button>
               <button className="mr-3">
                 <FiGrid className="text-gray-500 text-sm" />
               </button>
@@ -224,6 +236,12 @@ const Dashboard = () => {
       )}
       {activeDiv === "Users" &&(
         <Users/>
+      ) }
+      {activeDiv === "Settings" &&(
+        <Settings/>
+      ) }
+      {activeDiv === "Tickets" &&(
+        <Tickets/>
       ) }
       </div>
       

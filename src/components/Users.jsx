@@ -3,32 +3,27 @@ import Pagination from "../pagination/pagination";
 import search from "../assets/search 1.png";
 
 const Users = () => {
-  // State for pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 10; // You can dynamically calculate this based on the data
-
+  const totalPages = 10; 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-    // Fetch new data based on the page or update the displayed data
   };
 
   return (
     <div className="h-screen bg-[#f3f4f6]">
       <div className="w-[90%] m-auto h-screen">
         <div className="w-full flex justify-between mt-7">
-          <p>
-            <b>Hello Nzayisena👋</b>
-          </p>
+          
           <div className="w-[280px] h-[38px] bg-white rounded-sm flex items-center px-2 justify-between">
-            <img src={search} width="20" height="20" alt="search icon" />
+            <img src={search} width="20" height="20" alt="search icon" className=" mr-[-40px] " />
             <input
               type="search"
               placeholder="search"
-              className="w-[90%] outline-none"
+              className="w-[90%] outline-none border border-gray-300 rounded-[30px] h-8 pl-5"
             />
           </div>
         </div>
-        <div className="w-full bg-white rounded-md py-7 px-8 mt-7 flex justify-between">
+        <div className="w-full bg-white rounded-md px-8 mt-3 flex justify-between">
           <div className="flex gap-2 items-center">
             <div className="rounded-full w-10 h-10 flex justify-center items-center border-[1px] border-[#000000]">
               <i className="bi bi-person-fill" style={{ color: "#5932EA" }}></i>
