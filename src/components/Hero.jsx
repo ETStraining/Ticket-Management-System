@@ -32,8 +32,8 @@ function Hero() {
           </Link>
         </div>
       </div>
-      <div className="w-full flex items-center justify-center">
-        <div className="max-w-md p-6 bg-white rounded-lg shadow-md">
+      <div className="w-full flex items-center justify-center overflow-y-hidden">
+        <div className="max-w-md p-6 bg-white rounded-lg shadow-md ">
           <h1 className="text-3xl font-bold mb-4">Get Prompt Assistance</h1>
           <p className="mb-6">
             Our support team is dedicated to resolving your issues quickly and

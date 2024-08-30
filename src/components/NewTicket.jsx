@@ -234,7 +234,10 @@ const NewTicket = () => {
             )}
 
             {currentStep === 2 && (
-              <Vehicle onSelect={handleVehicleSelect} rideDetails={rideDetails} />
+              <Vehicle
+                onVehicleSelect={handleVehicleSelect}
+                rideDetails={rideDetails}
+              />
             )}
 
             {currentStep === 3 && (
@@ -266,13 +269,13 @@ const NewTicket = () => {
                   <strong>Selected Vehicle:</strong> {selectedVehicle.name}
                 </p>
                 <p className="mb-2">
-                  <strong>Contact Name:</strong> {contactInfo.name}
+                  <strong>Contact Name:</strong> {contactInfo.fullName}
                 </p>
                 <p className="mb-2">
                   <strong>Contact Email:</strong> {contactInfo.email}
                 </p>
                 <p className="mb-2">
-                  <strong>Contact Phone:</strong> {contactInfo.phone}
+                  <strong>Contact Phone:</strong> {contactInfo.phoneNumber}
                 </p>
                 <button
                   onClick={handleConfirmBooking}
