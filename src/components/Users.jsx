@@ -22,48 +22,7 @@ const Users = () => {
               className="w-[90%] outline-none border border-gray-300 rounded-[30px] h-8 pl-5"
             />
           </div>
-        </div>
-        <div className="w-full bg-white rounded-md px-8 mt-3 flex justify-between">
-          <div className="flex gap-2 items-center">
-            <div className="rounded-full w-10 h-10 flex justify-center items-center border-[1px] border-[#000000]">
-              <i className="bi bi-person-fill" style={{ color: "#5932EA" }}></i>
-            </div>
-            <div className="text-sm">
-              <b>
-                Total Users
-                <br />
-                2000
-              </b>
-            </div>
-          </div>
-          <div className="flex gap-2 items-center">
-            <div className="rounded-full w-10 h-10 flex justify-center items-center border-[1px] border-[#000000]">
-              <i className="bi bi-person-fill" style={{ color: "#5932EA" }}></i>
-            </div>
-            <div className="text-xs">
-              <b>
-                Total Users
-                <br />
-                2000
-                <br />
-                this month
-              </b>
-            </div>
-          </div>
-          <div className="flex gap-2 items-center">
-            <div className="rounded-full w-10 h-10 flex justify-center items-center border-[1px] border-[#000000]">
-              <i className="bi-window-fullscreen" style={{ color: "#5932EA" }}></i>
-            </div>
-            <div className="text-sm">
-              <b>
-                Active now
-                <br />
-                2000
-                <br />
-              </b>
-            </div>
-          </div>
-        </div>
+        </div>     
         <div className="bg-white w-full rounded-md mt-7 px-8 py-4">
           <p>All Users</p>
           <p className="text-xs mt-2" style={{ color: "#5932EA" }}>Active now</p>
@@ -73,28 +32,23 @@ const Users = () => {
                 <th className="text-left py-2">User Name</th>
                 <th className="text-left py-2">Email</th>
                 <th className="text-left py-2">Phone Number</th>
-                <th className="text-left py-2">Status</th>
               </tr>
             </thead>
             <tbody>
-              {/* Map through your user data here */}
               <tr className="text-sm border-b border-[#EEEEEE]">
                 <td className="text-left py-3">Nzayisenga Emmanuel</td>
                 <td className="text-left py-3">nzayisengaemmy2001@gmail.com</td>
                 <td className="text-left py-3">0790838315</td>
-                <td className="text-left text-[#00B087] py-3">Active</td>
               </tr>
               <tr className="text-sm border-b border-[#EEEEEE]">
                 <td className="text-left py-3">Nzayis</td>
                 <td className="text-left py-3">nzayisengaemmy2001@gmail.com</td>
                 <td className="text-left py-3">0790838315</td>
-                <td className="text-left text-[#DF0404] py-3">In Active</td>
               </tr>
               <tr className="text-sm border-b border-[#EEEEEE]">
                 <td className="text-left py-3">Nzayis</td>
                 <td className="text-left py-3">nzayisengaemmy2001@gmail.com</td>
                 <td className="text-left py-3">0790838315</td>
-                <td className="text-left text-[#DF0404] py-3">In Active</td>
               </tr>
               
               {/* More rows as needed */}

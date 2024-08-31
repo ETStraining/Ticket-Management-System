@@ -15,6 +15,7 @@ import {
 } from "react-icons/fi";
 import Settings from "./Settings";
 import Tickets from "./Tickets";
+import Officials from "./Officials";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -121,7 +122,7 @@ const Dashboard = () => {
       <div className=" h-[80vh] fixed w-full md:w-[85%]">
       {activeDiv ==="Dashboard" &&(
           <main className="p-4 overflow-auto h-[calc(100vh-56px)]">
-            <h2 className="text-[22px] font-semibold mb-4">Tickets</h2>
+            <h2 className="text-[22px] font-semibold mb-4 overflow-hidden">Tickets</h2>
             <div className="flex justify-between mb-4">
               <div className="relative">
                 <input
@@ -131,13 +132,7 @@ const Dashboard = () => {
                 />
                 <FiSearch className="absolute left-2.5 top-2 text-gray-400 text-[13px]" />
               </div>
-              <div className="flex space-x-3">
-                <select className="border rounded-md px-3 py-1.5 text-[13px]">
-                  <option>Select Priority</option>
-                </select>
-                <select className="border rounded-md px-3 py-1.5 text-[13px]">
-                  <option>This Week</option>
-                </select>
+              <div className="flex space-x-3">                
                 <button
                   onClick={() => navigate("/new-ticket")}
                   className="bg-indigo-500 text-white px-3 py-1.5 rounded-md flex items-center text-[13px]"
@@ -242,6 +237,9 @@ const Dashboard = () => {
       ) }
       {activeDiv === "Tickets" &&(
         <Tickets/>
+      ) }
+      {activeDiv === "Officials" &&(
+        <Officials/>
       ) }
       </div>
       

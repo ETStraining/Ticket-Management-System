@@ -12,10 +12,10 @@ const Tickets = () => {
 
   // Static ticket data including the new columns
   const tickets = [
-    { id: 'T001', customer: 'Alice Johnson', status: 'Active', createdAt: '2024-08-29', pickTime: '10:00 AM', startLocation: 'New York', startingTime: '10:30 AM' },
-    { id: 'T002', customer: 'Bob Smith', status: 'Completed', createdAt: '2024-08-28', pickTime: '11:00 AM', startLocation: 'Los Angeles', startingTime: '11:20 AM' },
-    { id: 'T003', customer: 'Charlie Brown', status: 'Pending', createdAt: '2024-08-27', pickTime: '12:00 PM', startLocation: 'Chicago', startingTime: '12:10 PM' },
-    { id: 'T004', customer: 'David Wilson', status: 'Cancelled', createdAt: '2024-08-26', pickTime: '01:00 PM', startLocation: 'Houston', startingTime: '01:05 PM' },
+    { id: 'T001', customer: 'Alice Johnson', status: 'Active', createdAt: '2024-08-29', pickTime: '10:00 AM', startLocation: 'Musanze - Kigali', startingTime: '10:30 AM' },
+    { id: 'T002', customer: 'Bob Smith', status: 'Completed', createdAt: '2024-08-28', pickTime: '11:00 AM', startLocation: 'Musanze - Kigali', startingTime: '11:20 AM' },
+    { id: 'T003', customer: 'Charlie Brown', status: 'Pending', createdAt: '2024-08-27', pickTime: '12:00 PM', startLocation: 'Musanze - Kigali', startingTime: '12:10 PM' },
+    { id: 'T004', customer: 'David Wilson', status: 'Cancelled', createdAt: '2024-08-26', pickTime: '01:00 PM', startLocation: 'Musanze - Kigali', startingTime: '01:05 PM' },
   ];
 
   return (
@@ -37,7 +37,7 @@ const Tickets = () => {
                   <th className="text-left py-2">Status</th>
                   <th className="text-left py-2">Created At</th>
                   <th className="text-left py-2">Pick Time</th>
-                  <th className="text-left py-2">Start Location</th>
+                  <th className="text-left py-2">Direction</th>
                   <th className="text-left py-2">Starting Time</th>
                 </tr>
               </thead>
