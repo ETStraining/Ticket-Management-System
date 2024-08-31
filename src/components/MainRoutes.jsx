@@ -11,9 +11,10 @@ import NewTicket from "./NewTicket.jsx";
 import ContactDetail from "./ContactDetail.jsx";
 import About from "./About.jsx";
 import Users from "./Users.jsx";
-
+import { ThemeProvider } from './ThemeContext';
 const MainRoutes = () => {
   return (
+    <ThemeProvider>
     <Routes>
       <Route element={<OutletFile />}>
         <Route path="/" element={<App />} />
@@ -26,6 +27,7 @@ const MainRoutes = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/users" element={<Users />} />
     </Routes>
+    </ThemeProvider>
   );
 };
 
