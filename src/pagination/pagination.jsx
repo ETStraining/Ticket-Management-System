@@ -87,7 +87,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   };
 
   return (
-    <ul className="pagination">
+    <ul className="pagination fixed bottom-[-10px] right-20">
       <li
         className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
         onClick={() => handleClick(currentPage - 1)}
