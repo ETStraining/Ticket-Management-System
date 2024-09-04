@@ -37,7 +37,7 @@ const Tickets = () => {
                 <th className="text-left py-2">Status</th>
                 <th className="text-left py-2">Created At</th>
                 <th className="text-left py-2">Pick Time</th>
-                <th className="text-left py-2">Direction</th>
+                <th className="text-left py-2">Destination</th>
                 <th className="text-left py-2">Starting Time</th>
               </tr>
             </thead>

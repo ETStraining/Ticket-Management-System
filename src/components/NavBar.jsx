@@ -17,10 +17,7 @@ function NavBar() {
         <div className="text-white text-3xl font-bold overflow-hidden">
           Support Ticket System
         </div>
-        <ul className="flex space-x-4">
-          <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
+        <ul className="flex space-x-4">        
           <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
             <Link to="/about">About</Link>
           </li>
@@ -56,9 +53,6 @@ function NavBar() {
           className="sm:hidden bg-indigo-500 "
         >
           <ul className="flex flex-col space-y-2 p-5 h-screen">
-            <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
-              <Link to="/dashboard" onClick={()=>setIsOpen(!isOpen)}>Dashboard</Link>
-            </li>
             <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
               <Link to="/about" onClick={()=>setIsOpen(!isOpen)}>About</Link>
             </li>

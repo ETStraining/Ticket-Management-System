@@ -9,11 +9,9 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 function App() {
   return (
     <div className=' text-cent'>
-      {/* <NavBar/>     */}
       <Hero/>
       <Departures/>
       <Vision/>
-      {/* <Footer/> */}
     </div>
   )
 }

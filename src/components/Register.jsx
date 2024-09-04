@@ -1,24 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { setDoc, doc } from "firebase/firestore";
-import { auth, db } from "./config.js";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Register() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
-  const [telephone, setTelephone] = useState("");
+  const [phoneNumber, setTelephone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-  const navigate = useNavigate();
+  const navigate=useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!fullName || !email || !telephone || !password || !confirmPassword) {
+    if (!fullName || !email || !phoneNumber || !password || !confirmPassword) {
       setError("Fill all fields");
       return;
     }
@@ -26,29 +22,20 @@ function Register() {
       setError("Passwords do not match");
       return;
     }
-
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
-
-      await setDoc(doc(db, "users", user.uid), {
-        fullName,
-        email,
-        telephone,
-      });
-
-      setSuccess("Registration successful! You can now log in.");
-      setError("");
-
-      navigate("/login");
-    } catch (error) {
-      setError(`Error: ${error.message}`);
-      setSuccess("");
+    try{
+      const response= await axios.post('https://tm-system-1.onrender.com/api/v1/users/signup',{fullName,email,password,phoneNumber})
+      navigate('/login')
+      setFullName('')
+      setEmail('')
+      setTelephone('')
+      setConfirmPassword('')
+      setPassword('')
+    }catch(error){
+      console.error(error)
+      setError(error.response ? error.response.data.message : 'Registration failed')
     }
+
+    
   };
 
   return (
@@ -58,9 +45,9 @@ function Register() {
           Create Your Account
         </h1>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-        {success && (
+        {/* {success && (
           <p className="text-green-500 text-center mb-4">{success}</p>
-        )}
+        )} */}
         <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
           <div>
             <label
@@ -95,7 +82,6 @@ function Register() {
           <div>
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="telephone"
             >
               Telephone Number
             </label>
@@ -103,7 +89,7 @@ function Register() {
               type="text"
               id="telephone"
               className="shadow border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              value={telephone}
+              value={phoneNumber}
               onChange={(e) => setTelephone(e.target.value)}
             />
           </div>

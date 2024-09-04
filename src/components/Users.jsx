@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Pagination from "../pagination/pagination";
 import search from "../assets/search 1.png";
 import { useTheme } from "./ThemeContext";
+import axios from "axios";
 
 const Users = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -11,6 +12,17 @@ const Users = () => {
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
+useEffect(()=>{
+  const GetAllUsers=async()=>{
+    try {
+      const response=await axios.get('https://tm-system-1.onrender.com/Users/get_api_v1_users')
+      console.log(response.data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  GetAllUsers();
+},[])
 
   return (
     <div className={`h-screen ${darkMode ? 'bg-gray-900' : 'bg-[#f3f4f6]'}`}>
@@ -53,7 +65,6 @@ const Users = () => {
                 <td className="text-left py-3">0790838315</td>
               </tr>
               
-              {/* More rows as needed */}
             </tbody>
           </table>
           <Pagination

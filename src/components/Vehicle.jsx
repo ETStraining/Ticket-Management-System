@@ -3,19 +3,14 @@ import React, { useState } from "react";
 const vehicles = [
   {
     id: 1,
-    name: "Coast",
+    name: "Public bus",
     times: ["08:00", "08:30", "09:00", "09:30", "10:00"],
   },
   {
     id: 2,
-    name: "Bus",
+    name: "Private bus",
     times: ["09:00", "09:30", "10:00", "10:30", "11:00"],
-  },
-  {
-    id: 3,
-    name: "Tax",
-    times: ["10:00", "10:30", "11:00", "11:30", "12:00"],
-  },
+  }
 ];
 
 const Vehicle = ({ onVehicleSelect }) => {
@@ -34,7 +29,7 @@ const Vehicle = ({ onVehicleSelect }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onVehicleSelect({ name: selectedVehicle.name, selectedTime });
+    onVehicleSelect({ name: selectedVehicle.name, time: selectedTime });
   };
 
   return (

@@ -1,31 +1,33 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./config.js";
+import axios from 'axios';
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
+
     if (!email || !password) {
-      setError("Email na Password birakenewe");
+      setError("Email and Password are required");
       return;
     }
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      setSuccess("Login irakunzwe!");
-      setError("");
-
-      navigate("/dashboard");
+      const response = await axios.post('https://tm-system-1.onrender.com/api/v1/users/login', { email, password });
+      console.log('You logged in with this data:', response.data);
+      navigate('/dashboard')
+      setEmail('');
+      setPassword('');
     } catch (error) {
-      setError(`Error: ${error.message}`);
-      setSuccess("");
+      if (error.response) {
+        setError(error.response.data.message || 'Login failed');
+      } else {
+        setError('Login failed. Please try again later.');
+      }
     }
   };
 
@@ -36,9 +38,6 @@ function Login() {
           Login to Your Account
         </h1>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-        {success && (
-          <p className="text-green-500 text-center mb-4">{success}</p>
-        )}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label

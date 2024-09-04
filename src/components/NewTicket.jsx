@@ -8,12 +8,16 @@ import ContactDetail from "./ContactDetail";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { db } from "./config.js";
 import Footer from "./Footer.jsx";
+import { pink } from "@mui/material/colors";
 
 const NewTicket = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [rideDetails, setRideDetails] = useState({});
   const [selectedVehicle, setSelectedVehicle] = useState(null);
-  const [contactInfo, setContactInfo] = useState(null);
+  const [contactInfo, setContactInfo] = useState(null);  
+  const [pickupDate, setPickupDate] = useState(getCurrentDate());
+  const [pickupTime, setPickupTime] = useState(getCurrentTime());
+
 
   const handleRideDetailsSubmit = (e) => {
     e.preventDefault();
@@ -22,6 +26,20 @@ const NewTicket = () => {
     setRideDetails(rideData);
     setCurrentStep(2);
   };
+
+  function getCurrentDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+  function getCurrentTime() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0'); 
+    const minutes = String(now.getMinutes()).padStart(2, '0'); 
+    return `${hours}:${minutes}`;
+  }
 
   const handleVehicleSelect = (vehicleData) => {
     setSelectedVehicle(vehicleData);
@@ -148,21 +166,22 @@ const NewTicket = () => {
                       Ride Details
                     </h3>
                     <div className="mt-4">
-                      <label className="block font-semibold">Pickup Date</label>
+                      <label className=" font-semibold hidden ">Pickup Date</label>
                       <input
                         type="date"
                         name="pickupDate"
-                        className="border p-2 mt-1 w-full"
-                        required
+                        value={pickupDate}
+                        className="border p-2 mt-1 w-full hidden"
                       />
-                      <label className="block font-semibold mt-4">
+                      <label className=" font-semibold mt-4 hidden">
                         Pickup Time
                       </label>
                       <input
                         type="time"
                         name="pickupTime"
-                        className="border p-2 mt-1 w-full"
-                        required
+                        value={pickupTime}
+                        className="border p-2 mt-1 w-full hidden"
+
                       />
                       <label className="block font-semibold mt-4">
                         Pickup Location
@@ -267,6 +286,9 @@ const NewTicket = () => {
                 </p>
                 <p className="mb-2">
                   <strong>Selected Vehicle:</strong> {selectedVehicle.name}
+                </p>
+                <p className="mb-2">
+                  <strong>Starting time:</strong> {selectedVehicle.time}
                 </p>
                 <p className="mb-2">
                   <strong>Contact Name:</strong> {contactInfo.fullName}
