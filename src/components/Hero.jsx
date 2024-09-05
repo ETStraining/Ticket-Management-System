@@ -41,7 +41,7 @@ function Hero() {
           </p>
           <div className="flex justify-end">
             <Link
-              to="/submit-ticket"
+              to="/"
               className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
             >
               Submit Ticket

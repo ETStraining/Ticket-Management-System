@@ -5,6 +5,14 @@ import { motion } from "framer-motion";
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
+  
+  const isAuthenticated = !!localStorage.getItem('token');
+  
+  const userInitials = (() => {
+    const name = localStorage.getItem('userName') || ''; 
+    const initials = name.split(' ').map(word => word[0]).join('').toUpperCase();
+    return initials;
+  })();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -17,16 +25,22 @@ function NavBar() {
         <div className="text-white text-3xl font-bold overflow-hidden">
           Support Ticket System
         </div>
-        <ul className="flex space-x-4">        
+        <ul className="flex space-x-4">
           <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
             <Link to="/about">About</Link>
           </li>
           <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
             <Link to="/new-ticket">New Ticket</Link>
           </li>
-          <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
-            <Link to="/login">Login</Link>
-          </li>
+          {isAuthenticated ? (
+            <li className="text-white flex items-center justify-center w-10 h-10 bg-gray-700 rounded-full">
+              {userInitials}
+            </li>
+          ) : (
+            <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
+              <Link to="/login">Login</Link>
+            </li>
+          )}
           <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
             <IoMdNotifications className="w-6 h-8" />
           </li>
@@ -47,23 +61,29 @@ function NavBar() {
 
       {isOpen && (
         <motion.div
-          initial={{ height: 0,width:0 }}
-          animate={{ height: "auto",width:"auto" }}
+          initial={{ height: 0, width: 0 }}
+          animate={{ height: "auto", width: "auto" }}
           transition={{ duration: 0.4 }}
-          className="sm:hidden bg-indigo-500 "
+          className="sm:hidden bg-indigo-500"
         >
           <ul className="flex flex-col space-y-2 p-5 h-screen">
             <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
-              <Link to="/about" onClick={()=>setIsOpen(!isOpen)}>About</Link>
+              <Link to="/about" onClick={() => setIsOpen(false)}>About</Link>
             </li>
             <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
-              <Link to="/new-ticket" onClick={()=>setIsOpen(!isOpen)}>New Ticket</Link>
+              <Link to="/new-ticket" onClick={() => setIsOpen(false)}>New Ticket</Link>
             </li>
+            {isAuthenticated ? (
+              <li className="text-white flex items-center justify-center w-10 h-10 bg-gray-700 rounded-full">
+                {userInitials}
+              </li>
+            ) : (
+              <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
+                <Link to="/login" onClick={() => setIsOpen(false)}>Login</Link>
+              </li>
+            )}
             <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
-              <Link to="/login" onClick={()=>setIsOpen(!isOpen)}>Login</Link>
-            </li>
-            <li className="text-white hover:bg-blue-700 px-3 py-2 rounded">
-              <IoMdNotifications onClick={()=>setIsOpen(!isOpen)} className="w-6 h-8" />
+              <IoMdNotifications onClick={() => setIsOpen(false)} className="w-6 h-8" />
             </li>
           </ul>
         </motion.div>
