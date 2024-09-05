@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Users from './Users'
 import {
@@ -20,6 +20,7 @@ import Tickets from "./Tickets";
 import Officials from "./Officials";
 import { IoClose } from "react-icons/io5";
 import { useTheme } from "./ThemeContext";
+import axios from "axios";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -32,7 +33,17 @@ const Dashboard = () => {
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
-
+  useEffect(()=>{
+    const FetchAllTickets=async()=>{
+      try {
+        const response=await axios.get('https://tm-system-1.onrender.com/api/v1/tickets')
+        console.log(" All Tickects: "+response.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    FetchAllTickets()
+  },[])
   const tickets = [
     {
       id: "2023-CS123",
@@ -40,21 +51,7 @@ const Dashboard = () => {
       user: "John Snow",
       priority: "Normal",
       status: "On-Going",
-    },
-    {
-      id: "2023-CS122",
-      title: "How to deposit money to my portal?",
-      user: "John Snow",
-      priority: "High",
-      status: "New",
-    },
-    {
-      id: "2023-CS121",
-      title: "How to deposit money to my portal?",
-      user: "John Snow",
-      priority: "Normal",
-      status: "Resolved",
-    },
+    }
   ];
 
   const getDivClass = (divName) => {

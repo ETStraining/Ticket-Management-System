@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 function Register() {
   const [fullName, setFullName] = useState("");
@@ -16,10 +17,12 @@ function Register() {
     e.preventDefault();
     if (!fullName || !email || !phoneNumber || !password || !confirmPassword) {
       setError("Fill all fields");
+      toast.error('Fill all fields')
       return;
     }
     if (password !== confirmPassword) {
       setError("Passwords do not match");
+      toast.error('Password do not match')
       return;
     }
     
@@ -34,9 +37,11 @@ function Register() {
       setTelephone('');
       setConfirmPassword('');
       setPassword('');
+      toast.success('Registration successful!!.. Pleas login?!')
     } catch (error) {
       setIsLoading(false);
       console.error(error);
+      toast.error(error.response ? error.response.data.message : 'Registration failed')
       setError(error.response ? error.response.data.message : 'Registration failed');
     }
   };

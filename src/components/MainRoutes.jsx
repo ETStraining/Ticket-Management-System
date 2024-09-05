@@ -12,6 +12,7 @@ import ContactDetail from "./ContactDetail.jsx";
 import About from "./About.jsx";
 import Users from "./Users.jsx";
 import { ThemeProvider } from './ThemeContext';
+import PrivateRoute from "./PrivateRoute.jsx";
 const MainRoutes = () => {
   return (
     <ThemeProvider>
@@ -21,8 +22,15 @@ const MainRoutes = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contact-detail" element={<ContactDetail />} />
       </Route>
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/new-ticket" element={<NewTicket />} />
+      <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+      <Route path="/new-ticket" element={<PrivateRoute><NewTicket /></PrivateRoute>}/>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/users" element={<Users />} />
