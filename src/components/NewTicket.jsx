@@ -5,10 +5,7 @@ import Cars from "../img/car.jpg";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import Vehicle from "./Vehicle";
 import ContactDetail from "./ContactDetail";
-import { collection, doc, setDoc } from "firebase/firestore";
-import { db } from "./config.js";
 import Footer from "./Footer.jsx";
-import { pink } from "@mui/material/colors";
 
 const NewTicket = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -58,23 +55,16 @@ const NewTicket = () => {
 
   const handleConfirmBooking = async () => {
     try {
-      const bookingId = new Date().getTime().toString();
-      await setDoc(doc(db, "bookings", bookingId), {
-        rideDetails,
-        selectedVehicle,
-        contactInfo,
-      });
-      alert("Booking confirmed successfully!");
+    
     } catch (error) {
-      console.error("Error confirming booking: ", error);
-      alert("Error confirming booking. Please try again.");
+
     }
   };
 
   return (
     <>
       <div className="bg-gray-100 min-h-screen px-4 sm:px-8 md:px-20 pt-20">
-        <header className="bg-orange-300 text-gray-900 p-4 flex flex-col sm:flex-row justify-between items-center fixed sm:h-16 left-0 top-0 w-full z-30">
+        <header className="bg-orange-300 text-gray-900 p-4 flex flex-col sm:flex-row justify-between items-center fixed sm:h-16 left-0 top-0 w-full z-50">
           <div className="flex items-center space-x-2">
             <FaPhone className="text-lg" />
             <div>+250 7888 888 888</div>

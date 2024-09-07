@@ -1,13 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-function DepartureCard() {
-  const route = "KIGALI - RUBAVU";
-  const frequency = "EVERY 30 MINUTES";
-  const price = "4839 frw";
-  const contacts = [
-    { location: "Nyabugogo", phone: "0782222371" },
-    { location: "Rubavu", phone: "0783040234" },
-  ];
+function DepartureCard({route,frequency,price,location,phone,location1,phone1} ) {
 
   return (
     <div className="max-w-sm rounded  shadow-lg p-4 m-4 bg-gray-200">
@@ -23,11 +16,13 @@ function DepartureCard() {
       <div className="py-4">
         <p className="text-gray-600 text-lg font-semibold">Price: {price}</p>
         <p className="text-gray-700 mt-2">Contact:</p>
-        {contacts.map((contact, index) => (
-          <p key={index} className="text-gray-600">
-            {contact.location}: {contact.phone}
+       
+          <p className="text-gray-600">
+            {location}: {phone}
           </p>
-        ))}
+          <p className="text-gray-600">
+            {location1}: {phone1}
+          </p>
       </div>
       <Link to="/new-ticket">
         <button

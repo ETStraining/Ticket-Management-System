@@ -7,7 +7,7 @@ const PrivateRoute = ({ children }) => {
   const loginTime = localStorage.getItem("loginTime");
   const currentTime = new Date().getTime();
 
-  const isAuthenticated = token && loginTime && (currentTime - loginTime < 1200000);
+  const isAuthenticated = token && loginTime && (currentTime - loginTime < 120000000000);
 
   if (!isAuthenticated) {
     localStorage.removeItem("token");
