@@ -35,13 +35,14 @@ function Login() {
       localStorage.setItem('token', token);
       localStorage.setItem('loginTime', loginTime);
 
-      if (email === adminEmail1 || adminEmail12) {
-        toast.success('Welcome Admin! Login successful...');
-        navigate('/dashboard');
-      } else {
-        toast.success('Welcome! Login successful...');
-        navigate('/');
-      }
+      const adminEmails = [adminEmail1, adminEmail12];
+    if (adminEmails.includes(email)) {
+      toast.success('Welcome Admin! Login successful...');
+      navigate('/dashboard');
+    } else {
+      toast.success('Welcome User! Login successful...');
+      navigate('/');
+    }
 
       setEmail('');
       setPassword('');
