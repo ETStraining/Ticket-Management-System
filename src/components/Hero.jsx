@@ -5,48 +5,36 @@ import bgImage from "../assets/bgimage.png";
 function Hero() {
   return (
     <div
-      style={{
-        backgroundImage: `url(${bgImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-      className="h-screen w-screen bg-gradient-to-r  flex sm:flex-row flex-col pt-10 sm:pt-0 "
+      // style={{
+      //   backgroundImage: `url(${bgImage})`,
+      //   backgroundSize: "cover",
+      //   backgroundPosition: "center",
+      //   height: "100vh",
+      // }}
+      className="w-screen flex justify-center bg-gray-900 h-screen items-center "
     >
-      <div className=" w-full h-full flex flex-col justify-center items-center px-10 sm:items-start sm:px-20">
-        <h1 className="text-2xl text-white text-center font-bold mb-4 sm:text-left font-inter overflow-hidden">
-          Streamline Your Support with Our Ticket System
+      <div className="max-w-4xl mx-auto flex  flex-col justify-center items-center px-10 sm:px-20 py-20">
+        <h1 className="text-5xl text-indigo-700 font-bold mb-6 text-center overflow-hidden">
+          Revolutionize Your Support with Our Ticket System
         </h1>
-        <p className="text-white text-lg mb-8 sm:text-left">
-          Get quick and efficient support for your issues. Submit a ticket and
-          our dedicated team will assist you promptly.
+        <p className="text-white text-2xl mb-10 text-center">
+          Streamline your support process, boost efficiency, and provide
+          exceptional customer service with our cutting-edge Ticket Management
+          System.
         </p>
-        <div className="flex justify-center sm:justify-start md: mt-10 items-center">
+        <div className="flex justify-center items-center mt-10">
           <Link
             to="/new-ticket"
-            className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded mr-4"
+            className="bg-indigo-700 hover:bg-indigo-900 text-white font-bold py-3 px-6 rounded-lg mr-6 transition-colors duration-300"
           >
-            Book Your Ticket Now
+            Get Started
           </Link>
-          <Link to="/" className="text-white hover:text-gray-200 font-medium">
-            View FAQs
+          <Link
+            to="/learn-more"
+            className="text-indigo-500 hover:text-indigo-600 font-medium transition-colors duration-300"
+          >
+            Learn More
           </Link>
-        </div>
-      </div>
-      <div className="w-full flex items-center justify-center overflow-y-hidden">
-        <div className="max-w-md p-6 bg-white rounded-lg shadow-md ">
-          <h1 className="text-3xl font-bold mb-4">Get Prompt Assistance</h1>
-          <p className="mb-6">
-            Our support team is dedicated to resolving your issues quickly and
-            efficiently.
-          </p>
-          <div className="flex justify-end">
-            <Link
-              to="/"
-              className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
-            >
-              Submit Ticket
-            </Link>
-          </div>
         </div>
       </div>
     </div>

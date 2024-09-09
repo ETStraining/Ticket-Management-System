@@ -6,6 +6,7 @@ import { FaPhone, FaEnvelope } from "react-icons/fa";
 import Vehicle from "./Vehicle";
 import ContactDetail from "./ContactDetail";
 import Footer from "./Footer.jsx";
+import axios from "axios";
 
 const NewTicket = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -54,27 +55,35 @@ const NewTicket = () => {
   };
 
   const handleConfirmBooking = async () => {
+    const bookingData = {
+      pickupDate: rideDetails.pickupDate,
+      pickupTime: rideDetails.pickupTime,
+      pickupLocation: rideDetails.pickupLocation,
+      dropOffLocation: rideDetails.dropoffLocation,
+      dueDate: "2024-09-08", 
+    };
+  
     try {
-    
+      const response = await axios.post("https://tm-system-1.onrender.com/api/v1/tickets/createTicket",
+        bookingData);
+      
+      console.log("Booking confirmed:", response.data);
     } catch (error) {
-
+      console.error("Error confirming booking:", error);
     }
   };
 
   return (
     <>
       <div className="bg-gray-100 min-h-screen px-4 sm:px-8 md:px-20 pt-20">
-        <header className="bg-orange-300 text-gray-900 p-4 flex flex-col sm:flex-row justify-between items-center fixed sm:h-16 left-0 top-0 w-full z-50">
+        <header className="bg-orange-300 text-gray-900 p-4 flex flex-col sm:flex-row justify-end sm:gap-20 items-center fixed sm:h-16 left-0 top-0 w-full z-50">
           <div className="flex items-center space-x-2">
             <FaPhone className="text-lg" />
-            <div>+250 7888 888 888</div>
+            <div>+250 788 888 888</div>
           </div>
           <div className="flex items-center space-x-2  sm:mt-0">
             <FaEnvelope className="text-lg" />
-            <div>ticketlead@gmail.com</div>
-          </div>
-          <div className=" sm:mt-0">
-            <span className="text-lg">Hi, Devcent!</span>
+            <div>ticket@tsm.com</div>
           </div>
         </header>
 
@@ -184,6 +193,12 @@ const NewTicket = () => {
                         <option>Kigali</option>
                         <option>Rubavu</option>
                         <option>Musanze</option>
+                        <option>Muhanga</option>
+                        <option>Huye</option>
+                        <option>Karongi</option>
+                        <option>Rusizi</option>
+                        <option>Kamembe</option>
+                        <option>Kayonza</option>
                       </select>
 
                       <label className="block font-semibold mt-4">
@@ -194,9 +209,15 @@ const NewTicket = () => {
                         className="border p-2 mt-1 w-full"
                         required
                       >
-                        <option>Kigali</option>
+                       <option>Kigali</option>
                         <option>Rubavu</option>
                         <option>Musanze</option>
+                        <option>Muhanga</option>
+                        <option>Huye</option>
+                        <option>Karongi</option>
+                        <option>Rusizi</option>
+                        <option>Kamembe</option>
+                        <option>Kayonza</option>
                       </select>
 
                       <label className="block font-semibold mt-4">

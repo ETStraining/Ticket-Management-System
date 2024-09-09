@@ -10,7 +10,6 @@ const Tickets = () => {
     setCurrentPage(page);
   };
   const { darkMode } = useTheme();
-  // Static ticket data including the new columns
   const tickets = [
     { id: 'T001', customer: 'Alice Johnson', status: 'Active', createdAt: '2024-08-29', pickTime: '10:00 AM', startLocation: 'Musanze - Kigali', startingTime: '10:30 AM' },
     { id: 'T002', customer: 'Bob Smith', status: 'Completed', createdAt: '2024-08-28', pickTime: '11:00 AM', startLocation: 'Musanze - Kigali', startingTime: '11:20 AM' },
@@ -28,8 +27,8 @@ const Tickets = () => {
       </div>
       <div className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} w-full rounded-md mt-7 px-8 py-4`}>
         <p className="text-lg font-semibold">All Tickets</p>
-        <div className="mt-4">
-          <table className="w-full">
+        <div className="mt-4 overflow-x-auto">
+        <table className="w-full min-w-full mt-2" >
             <thead>
               <tr className={`${darkMode ? 'text-gray-300' : 'text-[#575050]'} text-sm border-b ${darkMode ? 'border-gray-700' : 'border-[#EEEEEE]'}`}>
                 <th className="text-left py-2">Ticket ID</th>

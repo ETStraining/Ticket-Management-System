@@ -13,6 +13,7 @@ import About from "./About.jsx";
 import Users from "./Users.jsx";
 import { ThemeProvider } from './ThemeContext';
 import PrivateRoute from "./PrivateRoute.jsx";
+import LearnMore from "./LearnMore.jsx";
 const MainRoutes = () => {
   return (
     <ThemeProvider>
@@ -21,6 +22,7 @@ const MainRoutes = () => {
         <Route path="/" element={<App />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact-detail" element={<ContactDetail />} />
+        <Route path="/learn-more" element={<LearnMore />} />
       </Route>
       <Route
           path="/dashboard"

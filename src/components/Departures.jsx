@@ -9,13 +9,7 @@ const Departures = () => {
           TMS link people with places
         </p>
         <p className="sm:text-center">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti,
-          odit. Accusamus, at amet est incidunt inventore voluptates quidem
-          ratione. Itaque, exercitationem quo? Voluptatum quasi eveniet placeat!
-          Distinctio omnis dolores natus? Lorem ipsum dolor, sit amet
-          consectetur adipisicing elit. Quia voluptas blanditiis saepe fugit
-          corrupti eaque recusandae aspernatur! Numquam porro reiciendis ipsam
-          maiores repudiandae sapiente officiis nemo nisi rem ipsum. Voluptatum.
+        TSM is a comprehensive ticket management system designed to streamline the process of booking tickets online. With TSM, you can easily find and purchase tickets for various routes at your convenience. Our platform ensures a user-friendly experience, allowing you to browse available departures, check prices, and contact service providers directly. Enjoy the ease of managing your travel plans from the comfort of your home or on the go!
         </p>
       </div>
       <div className="w-full flex justify-center font-bold">

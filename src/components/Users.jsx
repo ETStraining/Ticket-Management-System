@@ -6,7 +6,7 @@ import { useTheme } from "./ThemeContext";
 
 const Users = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [users, setUsers] = useState([]); // Initialize users as an empty array
+  const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const totalPages = 10; 
@@ -53,24 +53,27 @@ const Users = () => {
           ) : error ? (
             <p className="text-red-500">{error}</p>
           ) : (
-            <table className="w-full mt-2 overscroll-x-auto overflow-x-auto">
-              <thead>
-                <tr className={`${darkMode ? 'text-gray-300 border-gray-700' : 'text-[#575050] border-[#EEEEEE]'} text-sm border-b`}>
-                  <th className="text-left py-2">User Name</th>
-                  <th className="text-left py-2">Email</th>
-                  <th className="text-left py-2">Phone Number</th>
-                </tr>
-              </thead>
-              <tbody>
-                {users.map((user) => (
-                  <tr key={user.id} className={`text-sm ${darkMode ? 'border-gray-700' : 'border-[#EEEEEE]'} border-b`}>
-                    <td className="text-left py-3">{user.FullName}</td>
-                    <td className="text-left py-3">{user.Email}</td>
-                    <td className="text-left py-3">{user.TelphoneNumber}</td>
+            // Wrap table in a responsive container
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-full mt-2">
+                <thead>
+                  <tr className={`${darkMode ? 'text-gray-300 border-gray-700' : 'text-[#575050] border-[#EEEEEE]'} text-sm border-b`}>
+                    <th className="text-left py-2">User Name</th>
+                    <th className="text-left py-2">Email</th>
+                    <th className="text-left py-2">Phone Number</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {users.map((user) => (
+                    <tr key={user.id} className={`text-sm ${darkMode ? 'border-gray-700' : 'border-[#EEEEEE]'} border-b`}>
+                      <td className="text-left py-3">{user.FullName}</td>
+                      <td className="text-left py-3">{user.Email}</td>
+                      <td className="text-left py-3">{user.TelphoneNumber}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           )}
 
           <Pagination 

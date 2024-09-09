@@ -10,6 +10,9 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
+  const adminEmail1 = "admin@gmail.com";
+  const adminEmail12 = "dusengimana@gmail.com";
+
   const handleSubmit = async (e) => {
     e.preventDefault(); 
   
@@ -23,32 +26,35 @@ function Login() {
     try {
       const response = await axios.post('https://tm-system-1.onrender.com/api/v1/users/login', { email, password });
       setIsLoading(false);
-      toast.success('Login successful! Redirecting to dashboard...');
-  
-      const token = response.data.token;
-  
+      toast.success('Login successful!');
+
+      const { token } = response.data;
+
       const loginTime = new Date().getTime();
       localStorage.setItem('token', token);
       localStorage.setItem('loginTime', loginTime);
-  
-      console.log('You logged in with this data:', response.data);
-  
-      navigate('/dashboard');
-      
+
+      if (email === adminEmail1 || adminEmail12) {
+        toast.success('Welcome Admin! Login successful...');
+        navigate('/dashboard');
+      } else {
+        toast.success('Welcome! Login successful...');
+        navigate('/');
+      }
+
       setEmail('');
       setPassword('');
     } catch (error) {
       setIsLoading(false);
       if (error.response) {
-        toast.error(error.response.data.message || 'Login failed')
+        toast.error(error.response.data.message || 'Login failed');
         setError(error.response.data.message || 'Login failed');
       } else {
         setError('Login failed. Please try again later.');
-        toast.error('Login failed. Please try again later.')
+        toast.error('Login failed. Please try again later.');
       }
     }
   };
-  
 
   return (
     <div className="h-screen w-screen flex items-center justify-center bg-white">

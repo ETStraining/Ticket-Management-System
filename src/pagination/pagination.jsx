@@ -12,7 +12,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     const pageNumbers = [];
 
     if (totalPages <= 7) {
-      // Display all pages if total is less than or equal to 7
       for (let i = 1; i <= totalPages; i++) {
         pageNumbers.push(
           <li
@@ -87,7 +86,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   };
 
   return (
-    <ul className="pagination fixed bottom-[-10px] right-20">
+    <ul className=" hidden pagination sm:fixed bottom-[-10px] right-20">
       <li
         className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
         onClick={() => handleClick(currentPage - 1)}

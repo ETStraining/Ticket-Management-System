@@ -61,45 +61,50 @@ const Dashboard = () => {
   };
 
   return (
-    <div className={`flex md:h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'} text-sm pt-4 mb-4 w-screen md:overflow-y-hidden md:fixed md:left-0 md:top-0 md:overflow-hidden`}>
-      <div className={`md:w-56 ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-md ${sidebarOpen ? "block" : "hidden"} sm:block`}>
+    <div className={`flex md:h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'} min-h-screen text-sm pt-4 mb-4 w-screen md:overflow-y-hidden md:fixed md:left-0 md:top-0 md:overflow-hidden`}>
+      <div className={`md:w-56 ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-md ${sidebarOpen ? "block" : "hidden"} h-screen sm:block`}>
         <div className={`p-3 text-lg font-bold ${darkMode ? 'text-white' : 'text-black'}`}>ALL TICKETS</div>
         <nav>
-          <div onClick={() => setActiveDiv("Dashboard")} className={getDivClass("Dashboard")}>
+          <div onClick={() =>{ setSidebarOpen(false)
+             setActiveDiv("Dashboard")}} className={getDivClass("Dashboard")}>
             <FiGrid className="mr-3 text-sm" />
             <span>Dashboard</span>
           </div>
-          <div onClick={() => setActiveDiv("Users")} className={getDivClass("Users")}>
+          <div onClick={() =>{ setSidebarOpen(false)
+             setActiveDiv("Users")}} className={getDivClass("Users")}>
             <FiUsers className="mr-3 text-sm" />
             <span>Users</span>          
           </div>
-          <div onClick={() => setActiveDiv("Tickets")} className={getDivClass("Tickets")}>
+          <div onClick={() =>{ setSidebarOpen(false)
+             setActiveDiv("Tickets")}} className={getDivClass("Tickets")}>
             <FiTag className="mr-3 text-sm" />
             <span>Tickets</span>
           </div>
-          <div onClick={() => setActiveDiv("Officials")} className={getDivClass("Officials")}>
+          <div onClick={() =>{ setSidebarOpen(false)
+             setActiveDiv("Officials")}} className={getDivClass("Officials")}>
             <FiUserCheck className="mr-3 text-sm" />
             <span>Officials</span>
           </div>
-          <div onClick={() => setActiveDiv("Settings")} className={getDivClass("Settings")}>
+          <div onClick={() =>{ setSidebarOpen(false)
+             setActiveDiv("Settings")}} className={getDivClass("Settings")}>
             <FiSettings className="mr-3 text-sm" />
             <span>Site Settings</span>
           </div>
         </nav>
       </div>
       <div className="flex-1 overflow-hidden">
-        <header className={`${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-sm`}>
+        <header className={`${darkMode ? 'bg-gray-800' : 'bg-white'}  shadow-sm`}>
           <div className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center">
               <button className="mr-4 md:hidden" onClick={toggleSidebar}>
                 {sidebarOpen ? (
-                  <IoClose className={`${darkMode ? 'text-white' : 'text-gray-900'} text-sm h-8 w-6`} />
+                  <IoClose className={`${darkMode ? 'text-white' : 'text-gray-900'}  mt-[-10px] h-8 w-6`} />
                 ) : (
                   <FiMenu className={`${darkMode ? 'text-white' : 'text-gray-900'} text-sm h-8 w-6`} />
                 )}
               </button>
               <button className="mr-3">
-                <FiGrid className={`${darkMode ? 'text-gray-400' : 'text-gray-500'} text-sm`} />
+                <FiGrid className={`${darkMode ? 'text-gray-400' : 'text-gray-500'} ${sidebarOpen?"hidden":"block"} text-sm`} />
               </button>
               <h1 className={`text-base font-semibold ${darkMode ? 'text-white' : 'text-black'}`}>Welcome! Bosco</h1>
             </div>
@@ -108,7 +113,7 @@ const Dashboard = () => {
                 {darkMode ? <FiSun className="text-yellow-400" /> : <FiMoon className="text-gray-500" />}
               </button>
               <button className="mr-3 relative">
-                <FiBell className={`${darkMode ? 'text-gray-400' : 'text-gray-500'} text-[17px]`} />
+                <FiBell className={`${darkMode ? 'text-gray-400' : 'text-gray-500'} ${sidebarOpen?"hidden":"block"} text-[17px]`} />
                 <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
               </button>
               <div className="flex items-center">
@@ -117,8 +122,8 @@ const Dashboard = () => {
                   alt="User"
                   className="w-8 h-8 rounded-full mr-2"
                 />
-                <span className={`mr-2 text-[13px] ${darkMode ? 'text-white' : 'text-black'}`}>Admin Name</span>
-                <FiChevronDown className={`${darkMode ? 'text-gray-400' : 'text-gray-500'} text-[13px]`} />
+                <span className={`mr-2 text-[13px] ${darkMode ? 'text-white' : 'text-black'} ${sidebarOpen?"hidden":"block"}`}>Admin Name</span>
+                <FiChevronDown className={`${darkMode ? 'text-gray-400' : 'text-gray-500'} ${sidebarOpen?"hidden":"block"} text-[13px]`} />
               </div>
             </div>
           </div>
