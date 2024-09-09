@@ -29,15 +29,26 @@ const Dashboard = () => {
   const [activeDiv, setActiveDiv] = useState("Dashboard");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { darkMode, toggleDarkMode } = useTheme();
+  const [ticketss,setTickets]=useState([])
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
   useEffect(()=>{
     const FetchAllTickets=async()=>{
+      const token = localStorage.getItem("token");
+  
       try {
-        const response=await axios.get('https://tm-system-1.onrender.com/api/v1/tickets')
-        console.log(" All Tickects: "+response.data)
+        const response = await axios.get(
+          "https://tm-system-1.onrender.com/api/v1/tickets",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, 
+            },
+          }
+        );
+        console.log("Response data:", response.data);
+        setTickets(response.data)
       } catch (error) {
         console.error(error)
       }
@@ -167,8 +178,8 @@ const Dashboard = () => {
                 ))}
               </div>
               <div className="space-y-3">
-                {tickets.map((ticket) => (
-                  <div key={ticket.id} className={`${darkMode ? 'bg-gray-800' : 'bg-white'} p-3 rounded-md shadow`}>
+                {ticketss.map((ticket) => (
+                  <div key={ticket._id} className={`${darkMode ? 'bg-gray-800' : 'bg-white'} p-3 rounded-md shadow`}>
                     <div className="flex justify-between items-center mb-1.5">
                       <div className="flex items-center">
                         <span
@@ -181,7 +192,7 @@ const Dashboard = () => {
                           }`}
                         ></span>
                         <span className={`font-semibold text-[13px] ${darkMode ? 'text-white' : 'text-black'}`}>
-                          Ticket# {ticket.id}
+                          Ticket#: {ticket._id}
                         </span>
                         {ticket.priority === "High" && (
                           <span className="ml-1.5 text-xxs bg-red-100 text-red-600 px-1.5 py-0.5 rounded">
@@ -190,22 +201,22 @@ const Dashboard = () => {
                         )}
                       </div>
                       <span className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                        Posted at 12:45 AM
+                        Posted at {ticket.pickupTime}
                       </span>
                     </div>
                     <h3 className={`font-semibold mb-1.5 text-[13px] ${darkMode ? 'text-white' : 'text-black'}`}>
-                      {ticket.title}
+                      {ticket.pickupLocation} - {ticket.dropOffLocation}
                     </h3>
                     <p className={`mb-3 text-[13px] ${darkMode ? 'text-gray-300' : 'text-gray-900'}`}>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
-                      ipsum dolor sit amet, consectetur adipiscing elit.
+                    This ticket is for a scheduled pickup from {ticket.pickupLocation} to {ticket.dropOffLocation}. 
+                    Please ensure to be available at the pickup location by {ticket.pickupTime}.
                     </p>
                     <div className="flex justify-between items-center">
                       <div className="flex items-center">
                         <img
                           src="https://via.placeholder.com/30"
                           alt="User"
-                          className="w-8 h-8 rounded-full mr-1.5"
+                          className="w-8 h-8 rounded-full mr-1.5 invisible"
                         />
                         <span className={`text-[13px] ${darkMode ? 'text-white' : 'text-black'}`}>{ticket.user}</span>
                       </div>

@@ -7,6 +7,7 @@ import Vehicle from "./Vehicle";
 import ContactDetail from "./ContactDetail";
 import Footer from "./Footer.jsx";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const NewTicket = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -53,26 +54,37 @@ const NewTicket = () => {
       contactInfo: info,
     });
   };
-
+    const navigate=useNavigate();
   const handleConfirmBooking = async () => {
     const bookingData = {
       pickupDate: rideDetails.pickupDate,
       pickupTime: rideDetails.pickupTime,
       pickupLocation: rideDetails.pickupLocation,
       dropOffLocation: rideDetails.dropoffLocation,
-      dueDate: "2024-09-08", 
+      dueDate: "2024-09-08",
     };
   
+    const token = localStorage.getItem("token");
+    // console.log(localStorage.getItem("token"));
+
     try {
-      const response = await axios.post("https://tm-system-1.onrender.com/api/v1/tickets/createTicket",
-        bookingData);
-      
+      const response = await axios.post(
+        "https://tm-system-1.onrender.com/api/v1/tickets",
+        bookingData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, 
+          },
+        }
+      );
+      navigate('/')
       console.log("Booking confirmed:", response.data);
+      alert("Booking confirmed!!");
     } catch (error) {
-      console.error("Error confirming booking:", error);
+      console.error("Error confirming booking:", error.response?.data || error.message);
     }
   };
-
+  
   return (
     <>
       <div className="bg-gray-100 min-h-screen px-4 sm:px-8 md:px-20 pt-20">

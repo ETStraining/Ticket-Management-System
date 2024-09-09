@@ -1,78 +1,99 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Pagination from '../pagination/pagination';
 import { FiUser, FiCalendar, FiClock, FiCheckCircle, FiXCircle } from 'react-icons/fi';
 import { useTheme } from './ThemeContext';
+
 const Tickets = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 10;
+  const [tickets, setTickets] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
+  const { darkMode } = useTheme();
+  const totalPages = 10; 
+
+  useEffect(() => {
+    const fetchTickets = async () => {
+      const token = localStorage.getItem("token");
+  
+      try {
+        const response = await axios.get(
+          "https://tm-system-1.onrender.com/api/v1/tickets",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, 
+            },
+          }
+        );
+        setTickets(response.data); 
+        setIsLoading(false);
+      } catch (err) {
+        setError("Failed to fetch tickets");
+        setIsLoading(false);
+      }
+    };
+
+    fetchTickets();
+  }, []);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
-  const { darkMode } = useTheme();
-  const tickets = [
-    { id: 'T001', customer: 'Alice Johnson', status: 'Active', createdAt: '2024-08-29', pickTime: '10:00 AM', startLocation: 'Musanze - Kigali', startingTime: '10:30 AM' },
-    { id: 'T002', customer: 'Bob Smith', status: 'Completed', createdAt: '2024-08-28', pickTime: '11:00 AM', startLocation: 'Musanze - Kigali', startingTime: '11:20 AM' },
-    { id: 'T003', customer: 'Charlie Brown', status: 'Pending', createdAt: '2024-08-27', pickTime: '12:00 PM', startLocation: 'Musanze - Kigali', startingTime: '12:10 PM' },
-    { id: 'T004', customer: 'David Wilson', status: 'Cancelled', createdAt: '2024-08-26', pickTime: '01:00 PM', startLocation: 'Musanze - Kigali', startingTime: '01:05 PM' },
-  ];
 
   return (
     <div className={`h-screen ${darkMode ? 'bg-gray-900' : 'bg-[#f3f4f6]'}`}>
-    <div className="w-[90%] m-auto h-screen">
-      <div className="w-full flex justify-between mt-7">
-        <p className={`${darkMode ? 'text-white' : 'text-black'}`}>
-          <b>Manage Tickets</b>
-        </p>
-      </div>
-      <div className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} w-full rounded-md mt-7 px-8 py-4`}>
-        <p className="text-lg font-semibold">All Tickets</p>
-        <div className="mt-4 overflow-x-auto">
-        <table className="w-full min-w-full mt-2" >
-            <thead>
-              <tr className={`${darkMode ? 'text-gray-300' : 'text-[#575050]'} text-sm border-b ${darkMode ? 'border-gray-700' : 'border-[#EEEEEE]'}`}>
-                <th className="text-left py-2">Ticket ID</th>
-                <th className="text-left py-2">Customer Name</th>
-                <th className="text-left py-2">Status</th>
-                <th className="text-left py-2">Created At</th>
-                <th className="text-left py-2">Pick Time</th>
-                <th className="text-left py-2">Destination</th>
-                <th className="text-left py-2">Starting Time</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tickets.map((ticket) => (
-                <tr key={ticket.id} className={`text-sm border-b ${darkMode ? 'border-gray-700' : 'border-[#EEEEEE]'}`}>
-                  <td className="text-left py-3">{ticket.id}</td>
-                  <td className="text-left py-3">{ticket.customer}</td>
-                  <td className="text-left py-3">
-                    {ticket.status === 'Active' ? (
-                      <span className="text-[#00B087] flex items-center">
-                        <FiCheckCircle className="mr-1" /> {ticket.status}
-                      </span>
-                    ) : ticket.status === 'Completed' ? (
-                      <span className="text-[#4CAF50] flex items-center">
-                        <FiCheckCircle className="mr-1" /> {ticket.status}
-                      </span>
-                    ) : ticket.status === 'Pending' ? (
-                      <span className="text-[#FFC107] flex items-center">
-                        <FiClock className="mr-1" /> {ticket.status}
-                      </span>
-                    ) : (
-                      <span className="text-[#DF0404] flex items-center">
-                        <FiXCircle className="mr-1" /> {ticket.status}
-                      </span>
-                    )}
-                  </td>
-                  <td className="text-left py-3">{ticket.createdAt}</td>
-                  <td className="text-left py-3">{ticket.pickTime}</td>
-                  <td className="text-left py-3">{ticket.startLocation}</td>
-                  <td className="text-left py-3">{ticket.startingTime}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <Pagination
+      <div className="w-[90%] m-auto h-screen">
+        <div className="w-full flex justify-between mt-7">
+          <p className={`${darkMode ? 'text-white' : 'text-black'}`}>
+            <b>Manage Tickets</b>
+          </p>
+        </div>
+        <div className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} w-full rounded-md mt-7 px-8 py-4`}>
+          <p className="text-lg font-semibold">All Tickets</p>
+          <div className="mt-4 overflow-x-auto">
+            {isLoading ? (
+              <p>Loading...</p>
+            ) : error ? (
+              <p className="text-red-500">{error}</p>
+            ) : (
+              <table className="w-full min-w-full mt-2">
+                <thead>
+                  <tr className={`${darkMode ? 'text-gray-300' : 'text-[#575050]'} text-sm border-b ${darkMode ? 'border-gray-700' : 'border-[#EEEEEE]'}`}>
+                    <th className="text-left py-2">Ticket ID</th>
+                    {/* <th className="text-left py-2">Customer</th> */}
+                    <th className="text-left py-2">Status</th>
+                    <th className="text-left py-2">Created At</th>
+                    <th className="text-left py-2">Pick Time</th>
+                    <th className="text-left py-2">Start Location</th>
+                    <th className="text-left py-2">Starting Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tickets.map((ticket) => (
+                    <tr key={ticket.id} className={`text-sm ${darkMode ? 'border-gray-700' : 'border-[#EEEEEE]'} border-b`}>
+                      <td className="text-left py-3">{ticket._id}</td>
+                      {/* <td className="text-left py-3">{ticket.customer}</td> */}
+                      <td className="text-left py-3">
+                        <span className={`px-2 py-1 rounded ${
+                          ticket.status === 'Active' ? 'bg-green-100 text-green-600' :
+                          ticket.status === 'Completed' ? 'bg-blue-100 text-blue-600' :
+                          ticket.status === 'Pending' ? 'bg-yellow-100 text-yellow-600' :
+                          'bg-red-100 text-red-600'
+                        }`}>
+                          {ticket.status}
+                        </span>
+                      </td>
+                      <td className="text-left py-3">{ticket.createdAt}</td>
+                      <td className="text-left py-3">{ticket.pickupTime}</td>
+                      <td className="text-left py-3">{ticket.pickupLocation} - {ticket.dropOffLocation}</td>
+                      <td className="text-left py-3">{ticket.dueDate}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+          <Pagination 
             currentPage={currentPage}
             totalPages={totalPages}
             onPageChange={handlePageChange}
@@ -80,8 +101,7 @@ const Tickets = () => {
         </div>
       </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default Tickets;

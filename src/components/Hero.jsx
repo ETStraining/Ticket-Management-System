@@ -11,7 +11,7 @@ function Hero() {
       //   backgroundPosition: "center",
       //   height: "100vh",
       // }}
-      className="w-screen flex justify-center bg-gray-900 h-screen items-center "
+      className="w-screen flex justify-center bg-black bg-opacity-90 h-screen items-center "
     >
       <div className="max-w-4xl mx-auto flex  flex-col justify-center items-center px-10 sm:px-20 py-20">
         <h1 className="text-5xl text-indigo-700 font-bold mb-6 text-center overflow-hidden">

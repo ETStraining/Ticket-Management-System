@@ -3,13 +3,15 @@ import axios from "axios";
 import Pagination from "../pagination/pagination";
 import search from "../assets/search 1.png";
 import { useTheme } from "./ThemeContext";
+import UpdateUser from "./UpdateUser";  // Import the UpdateUser component
 
 const Users = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-  const totalPages = 10; 
+  const [selectedUser, setSelectedUser] = useState(null);  // To store selected user for update
+  const totalPages = 10;
   const { darkMode } = useTheme();
 
   const handlePageChange = (page) => {
@@ -30,6 +32,27 @@ const Users = () => {
 
     fetchUsers();
   }, []);
+
+  const handleUpdateClick = (user) => {
+    setSelectedUser(user);  
+  };
+
+  const handleModalClose = () => {
+    setSelectedUser(null); 
+  };
+
+  const handleUserUpdate = () => {
+    setIsLoading(true);
+    axios.get("https://tm-system-1.onrender.com/api/v1/users")
+      .then(response => {
+        setUsers(response.data.allUsers);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setError("Failed to fetch users");
+        setIsLoading(false);
+      });
+  };
 
   return (
     <div className={`h-screen ${darkMode ? 'bg-gray-900' : 'bg-[#f3f4f6]'}`}>
@@ -53,7 +76,6 @@ const Users = () => {
           ) : error ? (
             <p className="text-red-500">{error}</p>
           ) : (
-            // Wrap table in a responsive container
             <div className="overflow-x-auto">
               <table className="w-full min-w-full mt-2">
                 <thead>
@@ -61,6 +83,7 @@ const Users = () => {
                     <th className="text-left py-2">User Name</th>
                     <th className="text-left py-2">Email</th>
                     <th className="text-left py-2">Phone Number</th>
+                    <th className="text-left py-2">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -69,6 +92,14 @@ const Users = () => {
                       <td className="text-left py-3">{user.FullName}</td>
                       <td className="text-left py-3">{user.Email}</td>
                       <td className="text-left py-3">{user.TelphoneNumber}</td>
+                      <td className="text-left py-3">
+                        <button
+                          className="bg-indigo-500 text-white px-3 py-1 rounded hover:bg-indigo-700"
+                          onClick={() => handleUpdateClick(user)}
+                        >
+                          Update
+                        </button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -83,6 +114,14 @@ const Users = () => {
           />
         </div>
       </div>
+
+      {selectedUser && (
+        <UpdateUser
+          user={selectedUser}
+          onClose={handleModalClose}
+          onUpdate={handleUserUpdate}
+        />
+      )}
     </div>
   );
 };

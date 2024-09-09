@@ -29,6 +29,7 @@ function Login() {
       toast.success('Login successful!');
 
       const { token } = response.data;
+      console.log(response.data);
 
       const loginTime = new Date().getTime();
       localStorage.setItem('token', token);
